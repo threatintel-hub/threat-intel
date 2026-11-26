@@ -95,6 +95,7 @@ td .sub{color:var(--muted);font-size:12.5px}td .score{margin:0}td .meter{width:7
 .copy{display:inline-flex;gap:6px;align-items:center;font:inherit;font-size:13px;font-weight:600;padding:6px 12px;border-radius:9px;border:1px solid var(--line);background:var(--soft);color:var(--fg);cursor:pointer}
 .foot{text-align:center;color:var(--muted);font-size:12px;margin-top:18px}
 @media (max-width:760px){
+ .hbox{max-width:none}.hp{grid-template-columns:1fr;gap:4px}.hp .fl{justify-self:start}
  .grid{grid-template-columns:1fr}
  .hero h1,.hero .meta,.hero .flags{max-width:none}.hero .art{position:static;display:block;width:180px;margin:-8px auto 4px}
  dl{grid-template-columns:1fr}dt{margin-top:6px}
@@ -119,8 +120,17 @@ mark{background:transparent;color:inherit}
 .flag.fh{background:rgba(227,116,0,.26);border-color:rgba(255,195,94,.55)}.flag.fh b{color:#ffd38a}
 .fl{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:6px;padding:1px 7px;margin-right:7px;vertical-align:1px}
 .fl-kev{background:#7a1fd1;color:#fff}.fl-cert{background:#0b8043;color:#fff}.fl-note{background:#b26a00;color:#fff}
+.hbox{position:relative;margin-top:14px;max-width:68%;background:rgba(10,14,40,.38);border:1px solid rgba(255,255,255,.18);
+ border-radius:16px;padding:6px 16px;backdrop-filter:blur(6px)}
+.hp{display:grid;grid-template-columns:84px 1fr;gap:10px;align-items:start;padding:9px 0;border-top:1px dashed rgba(255,255,255,.16)}
+.hp:first-child{border-top:0}
+.hp .fl{margin:2px 0 0;text-align:center}
+.hp ul{margin:0;padding:0 0 0 16px;font-size:13.5px;line-height:1.5;color:#eef2ff}
+.hp li{margin:1px 0}.hp li::marker{color:rgba(255,255,255,.55)}
+.fl-win{background:#3b4fc4;color:#fff}.fl-src{background:#475569;color:#fff}
 .hero .meta .ml{color:#fff;text-transform:uppercase;font-size:11px;letter-spacing:.08em;margin-right:2px}
 .hero .meta .sn{color:#c9d6ff;font-weight:600}
+@media (max-width:760px){.hbox{max-width:none;padding:4px 12px}.hp{grid-template-columns:1fr;gap:5px}.hp .fl{justify-self:start}}
 </style>
 </head>
 <body>
@@ -132,9 +142,8 @@ mark{background:transparent;color:inherit}
  <div class="date">26 Nov 2026 (Thu)</div>
  <div class="flags">
   <span class="flag fc"><b>🔴 6</b> critical</span><span class="flag fh"><b>🟠 12</b> high</span>
-  <span class="flag"><span class="fl fl-kev">KEV</span>none added 26 Nov so far · <mark class="h-num">10 added</mark> 25 Nov (missed in the 25 Nov report), <mark class="h-due">due 28 Nov / 9 Dec</mark></span><span class="flag"><span class="fl fl-cert">CERT-In</span><mark class="h-num">2 notes</mark> — SAP products (<mark class="h-crit">Critical</mark>), Cisco ClamAV (<mark class="h-high">High</mark>)</span><span class="flag"><span class="fl fl-note">Note</span><mark class="h-warn">Early edition</mark> (26 Nov, before most US news). The Register feed redirects off the approved domain and Dark Reading pages return 403, so they are feed-text only.</span>
  </div>
- <div class="meta"><b class="ml">Window</b> 26 Nov 2026, plus a recheck of 25 Nov · <b class="ml">Sources</b> <span class="sn">NVD</span> · <span class="sn">CISA KEV</span> · <span class="sn">CERT-In</span> · <span class="sn">The Hacker News</span> · <span class="sn">SecurityWeek</span> · <span class="sn">BleepingComputer</span> · <span class="sn">The Record</span> · <span class="sn">Dark Reading</span></div>
+ <div class="hbox"><div class="hp"><span class="fl fl-kev">KEV</span><ul><li>none added 26 Nov so far</li><li><mark class="h-num">10 added</mark> 25 Nov (missed in the 25 Nov report), <mark class="h-due">due 28 Nov / 9 Dec</mark></li></ul></div><div class="hp"><span class="fl fl-cert">CERT-In</span><ul><li><mark class="h-num">2 notes</mark> — SAP products (<mark class="h-crit">Critical</mark>), Cisco ClamAV (<mark class="h-high">High</mark>)</li></ul></div><div class="hp"><span class="fl fl-note">Note</span><ul><li><mark class="h-warn">Early edition</mark> (26 Nov, before most US news). The Register feed redirects off the approved domain and Dark Reading pages return 403, so they are feed-text only.</li></ul></div><div class="hp"><span class="fl fl-win">Window</span><ul><li>26 Nov 2026, plus a recheck of 25 Nov</li></ul></div><div class="hp"><span class="fl fl-src">Sources</span><ul><li><span class="sn">NVD</span> · <span class="sn">CISA KEV</span> · <span class="sn">CERT-In</span> · <span class="sn">The Hacker News</span> · <span class="sn">SecurityWeek</span> · <span class="sn">BleepingComputer</span> · <span class="sn">The Record</span> · <span class="sn">Dark Reading</span></li></ul></div></div>
 </header>
 
 <div class="grid">
