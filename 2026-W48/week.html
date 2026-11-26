@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 48 Threat Intel</title>
+<style>
+:root{--bg:#f3f5fa;--fg:#141a26;--muted:#5b6474}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b0f17;--fg:#e7eaf0;--muted:#98a2b3}}
+:root[data-theme="dark"]{--bg:#0b0f17;--fg:#e7eaf0;--muted:#98a2b3}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{max-width:940px;margin:0 auto;padding:20px 16px 40px}
+.hero{position:relative;overflow:hidden;border-radius:22px;padding:28px 28px 24px;color:#fff;
+ background:radial-gradient(120% 140% at 100% 0%,#3b4fc4 0%,#1b2459 45%,#0d1330 100%);
+ box-shadow:0 1px 2px rgba(16,24,40,.08),0 10px 30px rgba(16,24,40,.18)}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+ background:repeating-linear-gradient(90deg,rgba(255,255,255,.03) 0 1px,transparent 1px 40px),repeating-linear-gradient(0deg,rgba(255,255,255,.03) 0 1px,transparent 1px 40px)}
+.art{position:absolute;right:-6px;top:-4px;width:310px;height:auto}
+.kicker{display:inline-flex;align-items:center;gap:7px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#dfe6ff;font-weight:700;
+ background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:4px 11px}
+.kicker i{width:7px;height:7px;border-radius:50%;background:#ff6b5e;box-shadow:0 0 0 4px rgba(255,107,94,.25)}
+h1{margin:14px 0 2px;font-size:36px;line-height:1.1;letter-spacing:-.01em;max-width:62%}
+h1 span{background:linear-gradient(90deg,#fff,#dfe6ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.dates{font-size:18px;color:#eef2ff;font-weight:600}
+.quote{position:relative;margin:22px 0 0;max-width:64%;padding:16px 18px 14px 52px;border-radius:16px;
+ background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(4px)}
+.quote::before{content:"\201C";position:absolute;left:14px;top:-6px;font:700 58px/1 Georgia,serif;color:rgba(255,255,255,.55)}
+.quote p{margin:0;font:italic 18px/1.45 Georgia,"Times New Roman",serif;color:#fff}
+.quote cite{display:block;margin-top:8px;font-style:normal;font-size:13px;color:#dfe6ff;font-weight:600}
+.days{list-style:none;display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin:22px 0 0;padding:0;position:relative;z-index:1}
+.days li{border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}
+.days li.has{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.3)}
+.days a,.days div{display:block;text-align:center;padding:8px 0 7px;color:#fff;text-decoration:none}
+.days a:hover{background:rgba(255,255,255,.08);border-radius:12px}
+.dw{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#dfe6ff}
+.dd{display:block;font-size:20px;font-weight:800;line-height:1.2}
+.dm{display:block;font-size:11px;color:#dfe6ff}
+.dc{display:block;font-size:11px;margin-top:3px;white-space:nowrap}
+.foot{text-align:center;color:var(--muted);font-size:12px;margin-top:14px}
+@media (max-width:700px){
+ .hero{padding:22px 18px 18px}
+ .art{position:static;display:block;width:170px;margin:-6px auto 2px}
+ h1{font-size:28px;max-width:none}.quote{max-width:none}
+ .days{gap:5px}.dd{font-size:16px}.dc{font-size:10px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero" style="background:radial-gradient(120% 140% at 100% 0%,#6a3fc4 0%,#2a1659 45%,#110a2b 100%)">
+ <svg class="art" viewBox="0 0 260 190" aria-hidden="true"><defs><radialGradient id="glow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#d0b6ff" stop-opacity=".5"/><stop offset="1" stop-color="#d0b6ff" stop-opacity="0"/></radialGradient><linearGradient id="mg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c4a8ff"/><stop offset="1" stop-color="#5a3fb0"/></linearGradient><linearGradient id="beam" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d0b6ff" stop-opacity=".55"/><stop offset="1" stop-color="#d0b6ff" stop-opacity="0"/></linearGradient></defs><circle cx="130" cy="95" r="92" fill="url(#glow)"/><circle cx="124.4" cy="36.0" r="1.1" fill="#fff" opacity="0.32"/><circle cx="237.2" cy="38.7" r="1.2" fill="#fff" opacity="0.69"/><circle cx="17.2" cy="128.0" r="0.8" fill="#fff" opacity="0.52"/><circle cx="76.9" cy="33.1" r="1.5" fill="#fff" opacity="0.28"/><circle cx="23.9" cy="140.7" r="1.2" fill="#fff" opacity="0.61"/><circle cx="178.3" cy="60.2" r="1.5" fill="#fff" opacity="0.33"/><circle cx="139.6" cy="128.2" r="1.1" fill="#fff" opacity="0.60"/><circle cx="249.1" cy="94.8" r="1.0" fill="#fff" opacity="0.63"/><circle cx="221.4" cy="36.1" r="0.8" fill="#fff" opacity="0.59"/><circle cx="164.0" cy="53.8" r="0.8" fill="#fff" opacity="0.70"/><circle cx="125.9" cy="60.7" r="0.6" fill="#fff" opacity="0.25"/><circle cx="10.5" cy="189.2" r="1.3" fill="#fff" opacity="0.44"/><circle cx="168.2" cy="56.2" r="1.5" fill="#fff" opacity="0.66"/><circle cx="226.9" cy="46.4" r="1.1" fill="#fff" opacity="0.39"/><circle cx="80.5" cy="12.6" r="1.2" fill="#fff" opacity="0.46"/><circle cx="208.2" cy="22.2" r="0.7" fill="#fff" opacity="0.63"/><circle cx="197.8" cy="154.0" r="1.3" fill="#fff" opacity="0.26"/><circle cx="134.0" cy="82.7" r="0.7" fill="#fff" opacity="0.41"/><circle cx="20.0" cy="127.8" r="1.3" fill="#fff" opacity="0.59"/><circle cx="124.5" cy="175.7" r="1.1" fill="#fff" opacity="0.37"/><circle cx="153.9" cy="30.1" r="0.7" fill="#fff" opacity="0.65"/><circle cx="165.3" cy="169.1" r="0.7" fill="#fff" opacity="0.30"/><circle cx="172.1" cy="76.6" r="1.3" fill="#fff" opacity="0.56"/><circle cx="6.4" cy="89.9" r="1.3" fill="#fff" opacity="0.36"/><circle cx="235.6" cy="107.2" r="1.1" fill="#fff" opacity="0.50"/><circle cx="164.8" cy="23.2" r="0.7" fill="#fff" opacity="0.51"/><circle cx="148.7" cy="79.8" r="1.4" fill="#fff" opacity="0.23"/><circle cx="159.3" cy="50.0" r="1.2" fill="#fff" opacity="0.70"/><circle cx="116.4" cy="41.1" r="1.5" fill="#fff" opacity="0.40"/><circle cx="236.8" cy="33.8" r="0.8" fill="#fff" opacity="0.63"/><circle cx="32.0" cy="118.2" r="0.7" fill="#fff" opacity="0.29"/><circle cx="224.6" cy="51.8" r="1.0" fill="#fff" opacity="0.67"/><circle cx="194.0" cy="150.8" r="0.6" fill="#fff" opacity="0.24"/><circle cx="233.2" cy="134.7" r="1.2" fill="#fff" opacity="0.58"/><circle cx="184.3" cy="186.5" r="0.6" fill="#fff" opacity="0.31"/><circle cx="125.2" cy="8.7" r="1.4" fill="#fff" opacity="0.39"/><circle cx="195.5" cy="80.1" r="0.8" fill="#fff" opacity="0.39"/><circle cx="22.7" cy="35.2" r="1.3" fill="#fff" opacity="0.31"/><circle cx="204.2" cy="159.3" r="0.9" fill="#fff" opacity="0.62"/><circle cx="232.3" cy="41.8" r="1.6" fill="#fff" opacity="0.39"/><circle cx="148.7" cy="102.5" r="1.4" fill="#fff" opacity="0.58"/><circle cx="66.8" cy="142.6" r="1.3" fill="#fff" opacity="0.53"/><circle cx="173.1" cy="21.7" r="1.2" fill="#fff" opacity="0.52"/><circle cx="9.1" cy="119.7" r="1.1" fill="#fff" opacity="0.48"/><circle cx="82.3" cy="50.5" r="1.4" fill="#fff" opacity="0.44"/><g stroke="#d0b6ff" stroke-opacity=".55" stroke-width="1.3" fill="none"><polygon points="130,48 168,58 174,90 157,123 127,142 103,120 89,89 92,54"/><polyline points="115,94 127,108 148,80"/></g><circle cx="130" cy="48" r="6" fill="#d0b6ff" opacity=".2"/><circle cx="130" cy="48" r="2.6" fill="#fff"/><circle cx="168" cy="58" r="6" fill="#d0b6ff" opacity=".2"/><circle cx="168" cy="58" r="2.6" fill="#fff"/><circle cx="174" cy="90" r="6" fill="#d0b6ff" opacity=".2"/><circle cx="174" cy="90" r="2.6" fill="#fff"/><circle cx="157" cy="123" r="6" fill="#d0b6ff" opacity=".2"/><circle cx="157" cy="123" r="2.6" fill="#fff"/><circle cx="127" cy="142" r="6" fill="#d0b6ff" opacity=".2"/><circle cx="127" cy="142" r="2.6" fill="#fff"/><circle cx="103" cy="120" r="6" fill="#d0b6ff" opacity=".2"/><circle cx="103" cy="120" r="2.6" fill="#fff"/><circle cx="89" cy="89" r="6" fill="#d0b6ff" opacity=".2"/><circle cx="89" cy="89" r="2.6" fill="#fff"/><circle cx="92" cy="54" r="6" fill="#d0b6ff" opacity=".2"/><circle cx="92" cy="54" r="2.6" fill="#fff"/><circle cx="115" cy="94" r="6" fill="#d0b6ff" opacity=".2"/><circle cx="115" cy="94" r="2.6" fill="#fff"/><circle cx="127" cy="108" r="6" fill="#d0b6ff" opacity=".2"/><circle cx="127" cy="108" r="2.6" fill="#fff"/><circle cx="148" cy="80" r="6" fill="#d0b6ff" opacity=".2"/><circle cx="148" cy="80" r="2.6" fill="#fff"/><circle cx="127" cy="142" r="3.2" fill="#ff6b5e"/></svg>
+ <span class="kicker"><i></i>Weekly Threat Intel</span>
+ <h1><span>Week 48 Threat Intel</span></h1>
+ <div class="dates">23 Nov – 29 Nov 2026</div>
+ <blockquote class="quote"><p>Cybersecurity is much more than a matter of IT.</p><cite>— Stéphane Nappo</cite></blockquote>
+ <ul class="days"><li class="has"><a href="2026-11-23/card.html"><span class="dw">Mon</span><span class="dd">23</span><span class="dm">Nov</span></a></li><li class="has"><a href="2026-11-24/card.html"><span class="dw">Tue</span><span class="dd">24</span><span class="dm">Nov</span></a></li><li class="has"><a href="2026-11-25/card.html"><span class="dw">Wed</span><span class="dd">25</span><span class="dm">Nov</span></a></li><li class="has"><a href="2026-11-26/card.html"><span class="dw">Thu</span><span class="dd">26</span><span class="dm">Nov</span><span class="dc">🔴 6 · 🟠 12</span></a></li><li><div><span class="dw">Fri</span><span class="dd">27</span><span class="dm">Nov</span></div></li><li><div><span class="dw">Sat</span><span class="dd">28</span><span class="dm">Nov</span></div></li><li><div><span class="dw">Sun</span><span class="dd">29</span><span class="dm">Nov</span></div></li></ul>
+</header>
+<p class="foot">Daily updates for this week are posted in the Week 48 thread. Tap a day to open its card.</p>
+</div>
+<script>
+// "#snapshot": dark theme and record the banner height for the Chat picture
+if(location.hash==="#snapshot"){var r=document.documentElement;r.setAttribute("data-theme","dark");
+ var h=document.querySelector(".hero");r.setAttribute("data-shot-h",Math.ceil(h.getBoundingClientRect().bottom+window.scrollY+20));}
+</script>
+</body>
+</html>
