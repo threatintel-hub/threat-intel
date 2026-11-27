@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Threat Intel — 27 Nov 2026</title>
+<style>
+:root{--bg:#f3f5fa;--card:#ffffff;--fg:#141a26;--muted:#5b6474;--line:#e3e7ef;--chip:#eef1f6;--soft:#f7f8fc;
+--crit:#d93025;--high:#e37400;--med:#c99a00;--ok:#188038;--kev:#7a1fd1;--link:#2f54d9;--shadow:0 1px 2px rgba(16,24,40,.06),0 6px 20px rgba(16,24,40,.06)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b0f17;--card:#141a24;--fg:#e7eaf0;--muted:#98a2b3;--line:#263042;--chip:#1d2533;--soft:#111723;
+--link:#8fb0ff;--kev:#b47bff;--shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{--bg:#0b0f17;--card:#141a24;--fg:#e7eaf0;--muted:#98a2b3;--line:#263042;--chip:#1d2533;--soft:#111723;--link:#8fb0ff;--kev:#b47bff;--shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{max-width:940px;margin:0 auto;padding:20px 16px 48px}
+a{color:var(--link)}
+code,.chip{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px;background:var(--chip);border-radius:6px;padding:1px 6px;word-break:break-word}
+.ic{flex:none;vertical-align:middle}
+.hero{position:relative;overflow:hidden;border-radius:20px;padding:26px 26px 22px;color:#fff;
+ background:radial-gradient(120% 140% at 100% 0%,#3b4fc4 0%,#1b2459 45%,#0d1330 100%);box-shadow:var(--shadow)}
+.hero .art{position:absolute;right:-10px;top:-6px;width:300px;height:auto;opacity:.95}
+.hero .kicker{display:inline-flex;align-items:center;gap:6px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#dfe6ff;font-weight:700}
+.hero h1{margin:8px 0 4px;font-size:30px;line-height:1.15;max-width:60%}
+.hero .date{font-size:17px;color:#eef2ff}
+.hero .meta{margin-top:14px;font-size:12.5px;color:#d0d8f5;max-width:62%}
+.hero .flags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;max-width:66%}
+.flag{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:4px 11px;font-size:12.5px;color:#eef2ff;backdrop-filter:blur(4px)}
+.flag b{color:#fff}
+.grid{display:grid;grid-template-columns:230px 1fr 1fr;gap:14px;margin:16px 0}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow)}
+.panel h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 0 10px}
+.sev{display:flex;align-items:center;gap:14px}
+.donut{width:96px;height:96px}.donut .dn{font-size:22px;font-weight:800;fill:var(--fg)}.donut .dl{font-size:10px;fill:var(--muted)}
+.legend div{display:flex;align-items:center;gap:8px;font-size:14px;margin:4px 0}
+.sw{width:10px;height:10px;border-radius:3px}
+.bar{display:grid;grid-template-columns:24px 1fr 70px 18px;align-items:center;gap:8px;font-size:13px;color:var(--fg);text-decoration:none;padding:3px 0}
+.bar .bt{height:7px;background:var(--chip);border-radius:9px;overflow:hidden}.bar .bt span{display:block;height:100%;border-radius:9px}
+.bar .bn{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bi{display:grid;place-items:center;width:24px;height:24px;border-radius:7px;color:#fff}
+.acts{list-style:none;margin:0;padding:0}
+.acts li{display:flex;gap:10px;padding:7px 0;border-top:1px dashed var(--line)}.acts li:first-child{border-top:0;padding-top:0}
+.acts .dot{flex:none;width:10px;height:10px;border-radius:50%;margin-top:6px;background:currentColor;box-shadow:0 0 0 4px color-mix(in srgb,currentColor 18%,transparent)}
+.acts li.crit{color:var(--crit)}.acts li.high{color:var(--high)}
+.acts div{color:var(--fg);font-size:13.5px}.acts div span{display:block;color:var(--muted);font-size:12.5px}
+.acts .none{color:var(--muted);font-size:13.5px}
+.v-cve{background:linear-gradient(135deg,#ff7a59,#d93025)}.v-dep{background:linear-gradient(135deg,#ffb547,#e37400)}
+.v-ran{background:linear-gradient(135deg,#c56cf0,#7a1fd1)}.v-phi{background:linear-gradient(135deg,#4fc3f7,#1a73e8)}
+.v-act{background:linear-gradient(135deg,#6ee7b7,#0f9d58)}.v-bre{background:linear-gradient(135deg,#94a3b8,#475569)}
+details.sec{background:var(--card);border:1px solid var(--line);border-radius:18px;margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+details.sec>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:14px 18px}
+details.sec>summary::-webkit-details-marker{display:none}
+details.sec>summary::after{content:"";width:9px;height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);margin-left:4px;transition:transform .2s}
+details.sec:not([open])>summary::after{transform:rotate(-45deg)}
+.sicon{display:grid;place-items:center;width:38px;height:38px;border-radius:11px;color:#fff;flex:none}
+.stitle{font-weight:750;font-size:17px;flex:1}
+.scount{background:var(--chip);border-radius:999px;padding:1px 10px;font-weight:700;font-size:13px;color:var(--muted)}
+.sbody{padding:2px 18px 16px}
+.empty{color:var(--muted);margin:2px 0 4px;padding:12px 14px;background:var(--soft);border-radius:12px;border:1px dashed var(--line)}
+.item{display:grid;grid-template-columns:56px 1fr;gap:14px;padding:16px;border:1px solid var(--line);border-radius:14px;margin-top:12px;background:var(--soft);position:relative}
+.item::before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:4px;border-radius:0 4px 4px 0}
+.item.crit::before{background:var(--crit)}.item.high::before{background:var(--high)}
+.thumb{width:56px;height:56px;border-radius:14px;display:grid;place-items:center;color:#fff;box-shadow:inset 0 -10px 20px rgba(0,0,0,.12)}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
+.pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:11.5px;font-weight:700;white-space:nowrap}
+.p-crit{background:color-mix(in srgb,var(--crit) 14%,transparent);color:var(--crit)}
+.p-high{background:color-mix(in srgb,var(--high) 16%,transparent);color:var(--high)}
+.p-kev{background:color-mix(in srgb,var(--kev) 15%,transparent);color:var(--kev)}
+.p-due{border:1px solid var(--crit);color:var(--crit)}
+.p-late{border:1px solid var(--kev);color:var(--kev)}
+.item h3{margin:0 0 4px;font-size:16.5px;line-height:1.35}
+.why{margin:0 0 8px;color:var(--muted);font-size:13.5px}
+.score{display:flex;align-items:center;gap:8px;margin:6px 0 4px}
+.meter{width:120px;height:7px;border-radius:9px;background:var(--chip);overflow:hidden}.meter span{display:block;height:100%;border-radius:9px}
+.meter.crit span{background:linear-gradient(90deg,#ff9a7a,var(--crit))}.meter.high span{background:linear-gradient(90deg,#ffd08a,var(--high))}.meter.med span{background:var(--med)}
+.mv{font-size:13px}.mv.crit{color:var(--crit)}.mv.high{color:var(--high)}
+details.more{margin:8px 0}details.more>summary{cursor:pointer;color:var(--link);font-size:13px;font-weight:600}
+dl{display:grid;grid-template-columns:180px 1fr;gap:6px 14px;margin:10px 0 0;font-size:14px}
+dt{color:var(--muted);font-weight:600;font-size:13px}dd{margin:0}
+h4{margin:10px 0 6px;font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}h4 small{text-transform:none;letter-spacing:0;font-weight:500}
+.recs ul{list-style:none;margin:0;padding:0}.recs li{display:flex;gap:8px;align-items:flex-start;font-size:14px;margin:4px 0}
+.ok{color:var(--ok);margin-top:2px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.srcs{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.btn{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-size:13px;font-weight:600;padding:6px 12px;border-radius:9px;border:1px solid var(--line);background:var(--card)}
+.btn:hover{border-color:var(--link)}
+.tablewrap{margin-top:16px}.th4{margin-top:4px}
+table{width:100%;border-collapse:separate;border-spacing:0;font-size:13.5px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th,td{text-align:left;padding:10px;border-top:1px solid var(--line);vertical-align:top}
+thead th{border-top:0;background:var(--soft);color:var(--muted);font-weight:650;font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+td .sub{color:var(--muted);font-size:12.5px}td .score{margin:0}td .meter{width:70px}
+.fix{background:color-mix(in srgb,var(--ok) 12%,transparent);color:var(--ok);border-radius:6px;padding:1px 6px;font-weight:600;font-size:12.5px}
+.also{font-size:13px;color:var(--muted);margin:12px 0 0}
+.summary{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow);margin-top:14px}
+.summary h2{display:flex;align-items:center;justify-content:space-between;margin:0 0 8px;font-size:17px}
+.copy{display:inline-flex;gap:6px;align-items:center;font:inherit;font-size:13px;font-weight:600;padding:6px 12px;border-radius:9px;border:1px solid var(--line);background:var(--soft);color:var(--fg);cursor:pointer}
+.foot{text-align:center;color:var(--muted);font-size:12px;margin-top:18px}
+@media (max-width:760px){
+ .hbox{max-width:none}.hp{grid-template-columns:1fr;gap:4px}.hp .fl{justify-self:start}
+ .grid{grid-template-columns:1fr}
+ .hero h1,.hero .meta,.hero .flags{max-width:none}.hero .art{position:static;display:block;width:180px;margin:-8px auto 4px}
+ dl{grid-template-columns:1fr}dt{margin-top:6px}
+ .item{grid-template-columns:1fr}.thumb{width:44px;height:44px;border-radius:12px}
+ table,thead,tbody,tr,th,td{display:block}thead{display:none}table{border:0}
+ tr{border:1px solid var(--line);border-radius:12px;margin-bottom:10px;padding:8px 10px;background:var(--soft)}td{border:0;padding:3px 0}
+ td::before{content:attr(data-l);display:block;font-size:11px;text-transform:uppercase;color:var(--muted);font-weight:650}
+}
+@media print{details.sec{break-inside:avoid}.copy{display:none}}
+.snap details.sec,.snap .summary,.snap .foot,.snap .grid2{display:none}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:0 0 16px}
+.dls{list-style:none;margin:0;padding:0}
+.dls li{display:grid;grid-template-columns:58px 1fr auto;gap:4px 10px;align-items:baseline;padding:7px 0;border-top:1px dashed var(--line);font-size:13.5px}
+.dls li:first-child{border-top:0}
+.dls .dd{font-weight:800;color:var(--kev)}.dls .dleft{font-size:12px;font-weight:700;color:var(--muted);text-align:right}
+.dls li.soon .dleft{color:var(--high)}.dls li.now .dleft{color:var(--crit)}.dls li.now .dd{color:var(--crit)}
+.dls .dfrom{grid-column:2/4;font-size:11.5px;color:var(--muted);text-decoration:none}.dls .dfrom:hover{color:var(--link)}
+.dls .none,.usl .none{color:var(--muted)}
+.usl .dot{flex:none;width:10px;height:10px;border-radius:50%;margin-top:6px}.usl .dot.r{background:var(--crit)}.usl .dot.o{background:var(--high)}
+.stk{margin:8px 0 0;font-size:12px;color:var(--muted)}
+.p-us{background:color-mix(in srgb,#0f9d58 16%,transparent);color:#0b8043}
+.p-fu{border:1px solid var(--link);color:var(--link);text-decoration:none}
+.ep{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted);margin-left:14px}
+.meter.sm{width:60px;height:6px}
+td .ep{margin:4px 0 0}
+.flag.fu{background:rgba(15,157,88,.28);border-color:rgba(126,226,168,.55)}.flag.fu b{color:#a8f0c6}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .p-us{color:#7ee2a8}}
+:root[data-theme="dark"] .p-us{color:#7ee2a8}
+@media (max-width:760px){.grid2{grid-template-columns:1fr}}
+mark{background:transparent;color:inherit}
+:root{--warn:#b26a00}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--warn:#ffd166}}
+:root[data-theme="dark"]{--warn:#ffd166}
+.h-crit,.h-due,.h-bad{color:var(--crit);font-weight:700}.h-high{color:var(--high);font-weight:700}
+.h-kev{color:var(--kev);font-weight:700}.h-score,.h-num{font-weight:700}.h-warn{color:var(--warn);font-weight:700}
+.h-cve{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.9em;color:var(--link);font-weight:600;
+ background:color-mix(in srgb,var(--link) 11%,transparent);padding:0 5px;border-radius:5px;white-space:nowrap}
+.hero .h-crit,.hero .h-due,.hero .h-bad{color:#ff9b8f}.hero .h-high{color:#ffc35e}.hero .h-kev{color:#d9c2ff}
+.hero .h-cve{color:#b3dbff;background:rgba(255,255,255,.12)}.hero .h-num,.hero .h-score{color:#fff}.hero .h-warn{color:#ffd166}
+.flag.fc{background:rgba(217,48,37,.28);border-color:rgba(255,155,143,.55)}.flag.fc b{color:#ffb4aa}
+.flag.fh{background:rgba(227,116,0,.26);border-color:rgba(255,195,94,.55)}.flag.fh b{color:#ffd38a}
+.fl{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:6px;padding:1px 7px;margin-right:7px;vertical-align:1px}
+.fl-kev{background:#7a1fd1;color:#fff}.fl-cert{background:#0b8043;color:#fff}.fl-note{background:#b26a00;color:#fff}
+.hbox{position:relative;margin-top:14px;max-width:68%;background:rgba(10,14,40,.38);border:1px solid rgba(255,255,255,.18);
+ border-radius:16px;padding:6px 16px;backdrop-filter:blur(6px)}
+.hp{display:grid;grid-template-columns:84px 1fr;gap:10px;align-items:start;padding:9px 0;border-top:1px dashed rgba(255,255,255,.16)}
+.hp:first-child{border-top:0}
+.hp .fl{margin:2px 0 0;text-align:center}
+.hp ul{margin:0;padding:0 0 0 16px;font-size:13.5px;line-height:1.5;color:#eef2ff}
+.hp li{margin:1px 0}.hp li::marker{color:rgba(255,255,255,.55)}
+.fl-win{background:#3b4fc4;color:#fff}
+.win{margin-top:8px;font-size:13.5px;color:#dfe6ff}.win .fl{margin-right:8px}.fl-src{background:#475569;color:#fff}
+.hero .meta .ml{color:#fff;text-transform:uppercase;font-size:11px;letter-spacing:.08em;margin-right:2px}
+.hero .meta .sn{color:#c9d6ff;font-weight:600}
+@media (max-width:760px){.hbox{max-width:none;padding:4px 12px}.hp{grid-template-columns:1fr;gap:5px}.hp .fl{justify-self:start}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero" style="background:radial-gradient(120% 140% at 100% 0%,#2f6ad1 0%,#162a5c 45%,#0a1230 100%)">
+ <svg class="art" viewBox="0 0 260 190" aria-hidden="true"><defs><radialGradient id="glow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#8fc1ff" stop-opacity=".5"/><stop offset="1" stop-color="#8fc1ff" stop-opacity="0"/></radialGradient><linearGradient id="mg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#94c2ff"/><stop offset="1" stop-color="#2f6ad1"/></linearGradient><linearGradient id="beam" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8fc1ff" stop-opacity=".55"/><stop offset="1" stop-color="#8fc1ff" stop-opacity="0"/></linearGradient></defs><circle cx="130" cy="95" r="92" fill="url(#glow)"/><g fill="none" stroke="#8fc1ff" stroke-opacity=".3"><circle cx="130" cy="95" r="68"/><circle cx="130" cy="95" r="85" stroke-dasharray="2 8"/></g><g stroke="#8fc1ff" stroke-opacity=".4" stroke-width="1.1"><path d="M155.3 13.1 L112.0 33.5"/><path d="M155.3 13.1 L172.5 41.1"/><path d="M155.3 13.1 L200.2 55.8"/><path d="M193.8 158.2 L200.2 55.8"/><path d="M193.8 158.2 L229.5 139.4"/><path d="M44.4 95.9 L62.3 46.6"/><path d="M44.4 95.9 L19.1 165.1"/><path d="M44.4 95.9 L13.9 136.3"/><path d="M62.3 46.6 L112.0 33.5"/><path d="M62.3 46.6 L30.7 13.3"/><path d="M112.0 33.5 L30.7 13.3"/><path d="M172.5 41.1 L200.2 55.8"/><path d="M19.1 165.1 L13.9 136.3"/><path d="M200.2 55.8 L229.5 139.4"/></g><circle cx="155.3" cy="13.1" r="3.3" fill="#8fc1ff" opacity=".85"/><circle cx="193.8" cy="158.2" r="4.5" fill="#ff6b5e"/><circle cx="193.8" cy="158.2" r="9.5" fill="none" stroke="#ff6b5e" stroke-opacity=".5"/><circle cx="44.4" cy="95.9" r="2.5" fill="#8fc1ff" opacity=".85"/><circle cx="62.3" cy="46.6" r="4.5" fill="#ff6b5e"/><circle cx="62.3" cy="46.6" r="9.5" fill="none" stroke="#ff6b5e" stroke-opacity=".5"/><circle cx="112.0" cy="33.5" r="3.5" fill="#8fc1ff" opacity=".85"/><circle cx="172.5" cy="41.1" r="2.5" fill="#8fc1ff" opacity=".85"/><circle cx="30.7" cy="13.3" r="3.1" fill="#8fc1ff" opacity=".85"/><circle cx="19.1" cy="165.1" r="4.5" fill="#ff6b5e"/><circle cx="19.1" cy="165.1" r="9.5" fill="none" stroke="#ff6b5e" stroke-opacity=".5"/><circle cx="200.2" cy="55.8" r="2.6" fill="#8fc1ff" opacity=".85"/><circle cx="229.5" cy="139.4" r="3.3" fill="#8fc1ff" opacity=".85"/><circle cx="13.9" cy="136.3" r="3.4" fill="#8fc1ff" opacity=".85"/><g transform="rotate(3.1 130 95)"><path d="M130.0 49.0 l39.1 18.4 v23.0 c0 27.6 -17.6 43.7 -39.1 50.6 c-21.5 -6.9 -39.1 -23.0 -39.1 -50.6 v-23.0z" fill="url(#mg)" stroke="#e6ebff" stroke-width="2"/><path d="M126.3 56 l-9.7 13.8 l-4.8 9.4 l-9.2 11.4 l-0.4 12.4 l2.5 10.6" fill="none" stroke="#ff6b5e" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/><g stroke="#fff" stroke-opacity=".25"><path d="M100 80h60"/><path d="M98 96h64"/><path d="M102 112h56"/></g></g><circle cx="192.0" cy="43.7" r="13" fill="#0a1230" stroke="#8fc1ff" stroke-width="1.5"/><g transform="translate(184.8 36.5) scale(.6)" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.5l9-4 9 4-9 4z"/><path d="M3 7.5v9l9 4 9-4v-9"/><path d="M12 11.5v9"/></g><circle cx="186.7" cy="151.1" r="13" fill="#0a1230" stroke="#8fc1ff" stroke-width="1.5"/><g transform="translate(179.5 143.9) scale(.6)" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></g><circle cx="68.0" cy="146.3" r="13" fill="#0a1230" stroke="#8fc1ff" stroke-width="1.5"/><g transform="translate(60.8 139.1) scale(.6)" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18"/><path d="M6 11l1.5-6h9L18 11"/><circle cx="8" cy="16" r="2.5"/><circle cx="16" cy="16" r="2.5"/></g><circle cx="73.3" cy="38.9" r="13" fill="#0a1230" stroke="#8fc1ff" stroke-width="1.5"/><g transform="translate(66.1 31.7) scale(.6)" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v13c0 1.7 3.6 3 8 3s8-1.3 8-3v-13"/></g></svg>
+ <span class="kicker"><svg class="ic " width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg> Daily Threat Intel</span>
+ <h1>Threat Intel Update</h1>
+ <div class="date">27 Nov 2026 (Fri)</div>
+ <div class="win"><span class="fl fl-win">Window</span>27 Nov 2026, plus a recheck of 26 Nov</div>
+ <div class="flags">
+  <span class="flag fc"><b>🔴 4</b> critical</span><span class="flag fh"><b>🟠 6</b> high</span>
+ </div>
+ <div class="hbox"><div class="hp"><span class="fl fl-kev">KEV</span><ul><li>none added 26 or 27 Nov (catalog 2026.11.25)</li><li>due today 27 Nov: Drupal <mark class="h-cve">CVE-2026-132165</mark>, Idunno AntiCsrf <mark class="h-cve">CVE-2026-131914</mark>, Optimizely <mark class="h-cve">CVE-2026-132224</mark></li><li><mark class="h-due">due 28 Nov</mark>: Mitel MiCollab (4), Juniper Session Smart, Xen Orchestra, Danfoss (2)</li></ul></div><div class="hp"><span class="fl fl-cert">CERT-In</span><ul><li><mark class="h-num">3 notes</mark> — Mozilla Firefox / Thunderbird (<mark class="h-crit">Critical</mark>, 27 Nov)</li><li>Linux kernel KVM (<mark class="h-high">High</mark>, 27 Nov)</li><li>WhatsApp (<mark class="h-high">High</mark>, 26 Nov)</li></ul></div><div class="hp"><span class="fl fl-note">Note</span><ul><li>BleepingComputer returned 403, so its headlines were not checked</li><li>Apache Roller <mark class="h-cve">CVE-2026-129448</mark>, VMware vCenter <mark class="h-cve">CVE-2026-123890</mark> and Linux NFS2ROOT <mark class="h-cve">CVE-2026-99362</mark> are in today's news but were published 17–19 Nov, so they are outside the window</li></ul></div></div>
+</header>
+
+<div class="grid">
+ <section class="panel"><h2>Severity</h2>
+  <div class="sev"><svg class="donut" viewBox="0 0 90 90" role="img" aria-label="4 critical, 6 high">
+ <circle cx="45" cy="45" r="34" fill="none" stroke="var(--high)" stroke-width="12"/>
+ <circle cx="45" cy="45" r="34" fill="none" stroke="var(--crit)" stroke-width="12" stroke-dasharray="85.5 213.6" transform="rotate(-90 45 45)"/>
+ <text x="45" y="43" text-anchor="middle" class="dn">10</text><text x="45" y="58" text-anchor="middle" class="dl">items</text></svg><div class="legend">
+   <div><span class="sw" style="background:var(--crit)"></span>Critical <b>4</b></div>
+   <div><span class="sw" style="background:var(--high)"></span>High <b>6</b></div></div></div>
+ </section>
+ <section class="panel"><h2>By section</h2><a class="bar" href="#cve"><span class="bi v-cve"><svg class="ic " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M12 8v5"/><path d="M12 16.5h.01"/></svg></span><span class="bn">Vulnerability / CVE</span><span class="bt"><span class="v-cve" style="width:100%"></span></span><b>4</b></a><a class="bar" href="#dependency"><span class="bi v-dep"><svg class="ic " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7.5l9-4 9 4-9 4z"/><path d="M3 7.5v9l9 4 9-4v-9"/><path d="M12 11.5v9"/></svg></span><span class="bn">Vulnerable Dependency</span><span class="bt"><span class="v-dep" style="width:25%"></span></span><b>1</b></a><a class="bar" href="#ransomware"><span class="bi v-ran"><svg class="ic " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7.5a4 4 0 0 1 8 0V11"/><path d="M12 15v2"/></svg></span><span class="bn">Ransomware</span><span class="bt"><span class="v-ran" style="width:0%"></span></span><b>0</b></a><a class="bar" href="#phishing"><span class="bi v-phi"><svg class="ic " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><span class="bn">Phishing / Malware</span><span class="bt"><span class="v-phi" style="width:25%"></span></span><b>1</b></a><a class="bar" href="#actors"><span class="bi v-act"><svg class="ic " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18"/><path d="M6 11l1.5-6h9L18 11"/><circle cx="8" cy="16" r="2.5"/><circle cx="16" cy="16" r="2.5"/><path d="M10.5 16h3"/></svg></span><span class="bn">Threat Actors</span><span class="bt"><span class="v-act" style="width:50%"></span></span><b>2</b></a><a class="bar" href="#breaches"><span class="bi v-bre"><svg class="ic " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v13c0 1.7 3.6 3 8 3s8-1.3 8-3v-13"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><span class="bn">Data Breaches</span><span class="bt"><span class="v-bre" style="width:50%"></span></span><b>2</b></a></section>
+ <section class="panel"><h2>Act now</h2><ul class="acts"><li class="crit"><span class="dot"></span><div><b><mark class="h-kev">CISA KEV</mark> due today (27 Nov)</b><span>finish Drupal, Idunno AntiCsrf and Optimizely fixes; Mitel / Juniper / Xen Orchestra / Danfoss <mark class="h-due">due 28 Nov</mark></span></div></li><li class="crit"><span class="dot"></span><div><b>Cacti 4HTTP2SHELL (<mark class="h-bad">unpatched</mark>, PoC)</b><span>disable the guest account, restrict web access, check poller entries</span></div></li><li class="crit"><span class="dot"></span><div><b>Firefox / Thunderbird (CERT-In <mark class="h-crit">Critical</mark>)</b><span>update to Firefox 161, ESR 153.8 / 115.46, Thunderbird 161 / 153.8</span></div></li><li class="crit"><span class="dot"></span><div><b>Hex.pm accounts</b><span>change password, reset 2FA, rotate API keys, use repo.hex.pm only</span></div></li><li class="high"><span class="dot"></span><div><b>Q-Dir / DesktopOK</b><span>check versions and hashes, hunt the fake Edge task, reimage if found</span></div></li></ul></section>
+</div>
+<div class="grid2">
+ <section class="panel"><h2>⏰ CISA KEV deadlines</h2><ul class="dls"><li class="now"><span class="dd">27 Nov</span><span class="dn">Drupal &quot;Fail2Install&quot;</span><span class="dleft">today</span><a class="dfrom" href="../../2026-W48/2026-11-25/card.html">from 25 Nov</a></li><li class="now"><span class="dd">27 Nov</span><span class="dn">Optimizely Web Experimentation</span><span class="dleft">today</span><a class="dfrom" href="../../2026-W48/2026-11-24/card.html">from 24 Nov</a></li><li class="soon"><span class="dd">28 Nov</span><span class="dn">Danfoss AK-SM 800A refrigeration controllers</span><span class="dleft">1 day</span><a class="dfrom" href="../../2026-W48/2026-11-26/card.html">from 26 Nov</a></li><li class="soon"><span class="dd">28 Nov</span><span class="dn">HPE Juniper Session Smart Conductor / Router</span><span class="dleft">1 day</span><a class="dfrom" href="../../2026-W48/2026-11-26/card.html">from 26 Nov</a></li><li class="soon"><span class="dd">28 Nov</span><span class="dn">Mitel MiCollab AWV</span><span class="dleft">1 day</span><a class="dfrom" href="../../2026-W48/2026-11-26/card.html">from 26 Nov</a></li><li class="soon"><span class="dd">28 Nov</span><span class="dn">Vates Xen Orchestra</span><span class="dleft">1 day</span><a class="dfrom" href="../../2026-W48/2026-11-26/card.html">from 26 Nov</a></li></ul></section>
+ <section class="panel"><h2>🎯 Affects us</h2><ul class="acts usl"><li class="none">Add the products we run to <code>stack.txt</code> to switch this on.</li></ul></section>
+</div>
+
+<details class="sec" open id="cve">
+ <summary><span class="sicon v-cve"><svg class="ic " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M12 8v5"/><path d="M12 16.5h.01"/></svg></span><span class="stitle">Vulnerability / CVE</span><span class="scount">4</span></summary>
+ <div class="sbody"><article class="item crit">
+ <div class="thumb v-cve"><svg class="ic " width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M12 8v5"/><path d="M12 16.5h.01"/></svg></div>
+ <div class="ibody">
+  <div class="badges"><span class="pill p-crit">🔴 Critical</span></div>
+  <h3>Cacti 4HTTP2SHELL — <mark class="h-bad">unpatched</mark> <mark class="h-bad">zero-day</mark> gives RCE through the guest account (public PoC)</h3>
+  <p class="why">Zero-day with a public PoC and <mark class="h-bad">no fix</mark> in the latest Cacti release.</p>
+  
+  <details class="more"><summary>Full details</summary><dl><dt>1. Vulnerability details</dt><dd>No CVE yet (tracked as 4HTTP2SHELL / 4HTTP2ROOT) · Cacti Core 1.2.31 (latest) · <mark class="h-bad">unpatched</mark> · public PoC by researcher ek0ms savi0r · not reported <mark class="h-bad">exploited</mark> yet · not in <mark class="h-kev">KEV</mark></dd><dt>2. Issue</dt><dd>A guest user can save a non-numeric value in a numeric display setting. That stored value bypasses validation and becomes a second-order SQL injection, which ends in a command run by the poller.</dd><dt>3. How it is exploited</dt><dd>Attacker uses the enabled guest account to store a crafted setting → stacked SQL statements change a poller database entry → the poller passes that entry to PHP <code>popen()</code> without sanitising it. Four HTTP requests in total.</dd><dt>4. Affected configurations</dt><dd>Cacti Core 1.2.31 and likely earlier releases, only when the guest account is enabled (disabled by default since 0.8.7).</dd><dt>5. Impact</dt><dd>Remote code execution as the Cacti server user, exposure of stored device credentials, pivoting into the network and silencing alerts by editing the poller table.</dd></dl></details>
+  <div class="recs"><h4>Recommendations</h4><ul><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Disable the Cacti guest account now.</span></li><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Restrict the Cacti web interface to admin networks / VPN.</span></li><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Review poller entries for unexpected command values.</span></li><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Apply the fix as soon as Cacti releases one.</span></li></ul></div>
+  
+  <div class="srcs"><a class="btn" href="https://thehackernews.com/2026/11/unpatched-cacti-zero-day-enables-rce-in.html" target="_blank" rel="noopener noreferrer"><svg class="ic " width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>The Hacker News</a></div>
+ </div>
+</article><div class="tablewrap"><h4 class="th4">More CVEs</h4><table><thead><tr><th>#</th><th>CVE · Product</th><th>CVSS</th><th>Status</th><th>Fix</th><th>Source</th></tr></thead><tbody><tr><td data-l="#">2</td><td data-l="CVE"><b>CIVN-2026-0577 (mfsa2026-131 … 135)</b><div class="sub">Mozilla Firefox, Firefox ESR, Thunderbird</div></td><td data-l="CVSS"><div class="score"><span class="pill p-crit"><mark class="h-crit">Critical</mark></span></div></td><td data-l="Status">CERT-In <mark class="h-crit">Critical</mark> note 27 Nov; multiple vulnerabilities</td><td data-l="Fix"><span class="fix">Firefox 161 · ESR 153.8 / 115.46 · Thunderbird 161 / 153.8</span></td><td data-l="Source"><a href="https://www.cert-in.org.in/s2cMainServlet?pageid=PUBVLNOTES01&amp;VLCODE=CIVN-2026-0577" target="_blank" rel="noopener noreferrer">CERT-In</a></td></tr><tr><td data-l="#">3</td><td data-l="CVE"><b><mark class="h-cve">CVE-2026-99312</mark></b><div class="sub">Linux kernel KVM (memory management)</div></td><td data-l="CVSS"><div class="score"><span class="pill p-high"><mark class="h-high">High</mark></span></div><span class="ep" title="EPSS CVE-2026-99312: 0.3% chance of exploitation in 30 days, 17% percentile">EPSS <span class="meter med sm"><span style="width:3%"></span></span><b class="mv med">0.3%</b> <small>· 17% pct</small></span></td><td data-l="Status">CERT-In note 27 Nov (CIVN-2026-0578)</td><td data-l="Fix"><span class="fix">5.16 · 6.1.193 · 6.12.118 · 6.18.64 · 7.3.5 · 7.4-rc2</span></td><td data-l="Source"><a href="https://www.cert-in.org.in/s2cMainServlet?pageid=PUBVLNOTES01&amp;VLCODE=CIVN-2026-0578" target="_blank" rel="noopener noreferrer">CERT-In</a></td></tr><tr><td data-l="#">4</td><td data-l="CVE"><b><mark class="h-cve">CVE-2026-102769</mark> / <mark class="h-cve">CVE-2026-44908</mark> / <mark class="h-cve">CVE-2026-23871</mark></b><div class="sub">WhatsApp / WhatsApp Business (Android, iOS, Mac)</div></td><td data-l="CVSS"><div class="score"><span class="pill p-high"><mark class="h-high">High</mark></span></div><span class="ep" title="EPSS CVE-2026-102769: 0.3% chance of exploitation in 30 days, 14% percentile">EPSS <span class="meter med sm"><span style="width:3%"></span></span><b class="mv med">0.3%</b> <small>· 14% pct</small></span></td><td data-l="Status">CERT-In note 26 Nov (CIVN-2026-0576) <span class="pill p-late">Late (26 Nov)</span></td><td data-l="Fix"><span class="fix">Update to the versions in the note</span></td><td data-l="Source"><a href="https://www.cert-in.org.in/s2cMainServlet?pageid=PUBVLNOTES01&amp;VLCODE=CIVN-2026-0576" target="_blank" rel="noopener noreferrer">CERT-In</a></td></tr></tbody></table></div><p class="also"><b>Also seen:</b> none.</p></div>
+</details><details class="sec" open id="dependency">
+ <summary><span class="sicon v-dep"><svg class="ic " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7.5l9-4 9 4-9 4z"/><path d="M3 7.5v9l9 4 9-4v-9"/><path d="M12 11.5v9"/></svg></span><span class="stitle">Vulnerable Dependency</span><span class="scount">1</span></summary>
+ <div class="sbody"><article class="item crit">
+ <div class="thumb v-dep"><svg class="ic " width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7.5l9-4 9 4-9 4z"/><path d="M3 7.5v9l9 4 9-4v-9"/><path d="M12 11.5v9"/></svg></div>
+ <div class="ibody">
+  <div class="badges"><span class="pill p-crit">🔴 Critical</span><a class="pill p-fu" href="../../2026-W48/2026-11-25/card.html">↩ Update to 25 Nov</a></div>
+  <h3>Hex.pm (Elixir / Erlang registry) hacked via <mark class="h-cve">CVE-2026-129514</mark> — passwords, 2FA and API keys may be exposed</h3>
+  <p class="why">Exploited RCE on the package registry itself; every hex.pm account is affected.</p>
+  <div class="score"><div class="meter crit" title="CVSS 10.0"><span style="width:100%"></span></div><b class="mv crit">10.0</b><span class="ep" title="EPSS CVE-2026-129514: 3.2% chance of exploitation in 30 days, 89% percentile">EPSS <span class="meter high sm"><span style="width:3%"></span></span><b class="mv high">3.2%</b> <small>· 89% pct</small></span></div>
+  <details class="more"><summary>Full details</summary><dl><dt>1. Details</dt><dd><mark class="h-cve">CVE-2026-129514</mark> · <mark class="h-score">CVSS 10.0</mark> (v4) · deserialization of untrusted data · <mark class="h-bad">exploited</mark> 23 Nov (18:16–18:29 UTC, 69 requests to six servers) · disclosed 27 Nov · related fixes: Ash Framework <mark class="h-cve">CVE-2026-124283</mark>, db_connection <mark class="h-cve">CVE-2026-133555</mark>, flop <mark class="h-cve">CVE-2026-130411</mark></dd><dt>2. Issue</dt><dd>The hex.pm request parser for Erlang-format bodies deserialized attacker data, letting an unauthenticated user run OS commands on the web servers.</dd><dt>3. How it is exploited</dt><dd>A crafted Erlang external term format request body sent to hex.pm → command execution on the web servers → server credentials readable.</dd><dt>4. Affected</dt><dd>All hex.pm account holders. Hex found no package tampering, database changes or persistent access.</dd><dt>5. Impact</dt><dd>Email addresses, password hashes, API key hashes, sessions, 2FA secrets and audit logs may have been read (reads are not logged). Hex rotated credentials and signing keys and logged everyone out.</dd></dl></details>
+  <div class="recs"><h4>Recommendations</h4><ul><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Change hex.pm passwords and reset 2FA.</span></li><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Rotate any Hex API keys used in CI.</span></li><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Fetch packages only from <code>repo.hex.pm</code>, not third-party mirrors, until new Hex clients ship.</span></li><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Watch for phishing emails pretending to be Hex.</span></li></ul></div>
+  
+  <div class="srcs"><a class="btn" href="https://www.securityweek.com/hex-package-manager-warns-of-potential-data-breach/" target="_blank" rel="noopener noreferrer"><svg class="ic " width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>SecurityWeek</a><a class="btn" href="https://nvd.nist.gov/vuln/detail/CVE-2026-129514" target="_blank" rel="noopener noreferrer"><svg class="ic " width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>NVD</a></div>
+ </div>
+</article></div>
+</details><details class="sec" open id="ransomware">
+ <summary><span class="sicon v-ran"><svg class="ic " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7.5a4 4 0 0 1 8 0V11"/><path d="M12 15v2"/></svg></span><span class="stitle">Ransomware</span><span class="scount">0</span></summary>
+ <div class="sbody"><p class="empty">No new items.</p></div>
+</details><details class="sec" open id="phishing">
+ <summary><span class="sicon v-phi"><svg class="ic " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><span class="stitle">Phishing / Malware</span><span class="scount">1</span></summary>
+ <div class="sbody"><article class="item high">
+ <div class="thumb v-phi"><svg class="ic " width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
+ <div class="ibody">
+  <div class="badges"><span class="pill p-high">🟠 High</span></div>
+  <h3>Official Q-Dir and DesktopOK downloads trojanized to install a Python RAT</h3>
+  <p class="why">Supply-chain compromise of a vendor site: both new downloads and in-app updates were poisoned.</p>
+  
+  <details class="more"><summary>Full details</summary><dl><dt>1. Details</dt><dd>AhnLab ASEC research · SoftwareOK website · Q-Dir 12.85 / 12.84 / 12.83 and DesktopOK 12.85 / 12.82 · active · how the installers were replaced is unknown · not attributed (Chinese-language comments in the code)</dd><dt>2. Issue</dt><dd>Installers on the official SoftwareOK site were swapped for versions that also install a Python remote access trojan.</dd><dt>3. How it is exploited</dt><dd>The installer runs the real program to avoid suspicion, downloads a Python RAT package, and keeps it running through a scheduled task that pretends to be Microsoft Edge. The RAT reports installed security products to its server.</dd><dt>4. Affected</dt><dd>Windows users who downloaded or auto-updated Q-Dir or DesktopOK to the listed versions.</dd><dt>5. Impact</dt><dd>Remote shell and Python code execution, file upload / download, screenshots and system information theft.</dd></dl></details>
+  <div class="recs"><h4>Recommendations</h4><ul><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Check installed Q-Dir / DesktopOK versions and installer hashes.</span></li><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Hunt for an Edge-named scheduled task running Python, and the files below.</span></li><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Reimage affected machines — uninstalling may not remove the RAT.</span></li><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Block the indicators below.</span></li></ul></div>
+  <div class="iocs"><h4>IOCs <small>defanged — do not open</small></h4><div class="chips"><span class="chip">mail.c1a2[.]top</span><span class="chip">8.210.69[.]51:9876</span><span class="chip">dsv2_py39_agent.7z</span><span class="chip">py_client_dsv2.py</span></div></div>
+  <div class="srcs"><a class="btn" href="https://thehackernews.com/2026/11/hackers-trojanize-official-q-dir-and.html" target="_blank" rel="noopener noreferrer"><svg class="ic " width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>The Hacker News</a></div>
+ </div>
+</article></div>
+</details><details class="sec" open id="actors">
+ <summary><span class="sicon v-act"><svg class="ic " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18"/><path d="M6 11l1.5-6h9L18 11"/><circle cx="8" cy="16" r="2.5"/><circle cx="16" cy="16" r="2.5"/><path d="M10.5 16h3"/></svg></span><span class="stitle">Threat Actors</span><span class="scount">2</span></summary>
+ <div class="sbody"><article class="item crit">
+ <div class="thumb v-act"><svg class="ic " width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18"/><path d="M6 11l1.5-6h9L18 11"/><circle cx="8" cy="16" r="2.5"/><circle cx="16" cy="16" r="2.5"/><path d="M10.5 16h3"/></svg></div>
+ <div class="ibody">
+  <div class="badges"><span class="pill p-crit">🔴 Critical</span></div>
+  <h3>Switzerland confirms AI-agent attacks breached critical infrastructure operators</h3>
+  <p class="why">Follow-up to 26 Nov: the warning is now confirmed breaches, two of them at critical infrastructure.</p>
+  
+  <details class="more"><summary>Full details</summary><dl><dt>1. Details</dt><dd>Swiss NCSC (BACS) · 5 confirmed attacks, 4 breached · 3 targeted critical infrastructure operators, 2 succeeded · agent frameworks named: ARTEX, CyberStrikeAI (CSIRT Italia also names PentAGI, DeepSeek Harness) · attackers not identified</dd><dt>2. Issue</dt><dd>Autonomous AI agents are running intrusions end to end against exposed systems, including electricity, drinking water and telecom suppliers.</dd><dt>3. How it is exploited</dt><dd>Agents scan for known <mark class="h-bad">unpatched</mark> flaws, run many attacks in parallel, chain vulnerabilities, misconfigurations and stolen credentials, and switch methods when blocked; their actions look like normal user or API traffic.</dd><dt>4. Affected</dt><dd>Internet-facing systems with <mark class="h-bad">unpatched</mark> known flaws; SMEs and critical infrastructure operators.</dd><dt>5. Impact</dt><dd>Footholds for further agent activity and downtime on some internet-facing services; no major disruption reported.</dd></dl></details>
+  <div class="recs"><h4>Recommendations</h4><ul><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Patch critical flaws on internet-facing systems within 24 hours; <mark class="h-bad">exploited</mark> ones first.</span></li><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Isolate internet-facing systems you cannot patch quickly.</span></li><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Reduce exposure: geo-blocking, allow lists, authentication in front of services.</span></li><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>MFA or passkeys on every internet-reachable service; least privilege.</span></li><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Alert on unusual request rates and data volumes; add honeytokens on high-value endpoints.</span></li></ul></div>
+  
+  <div class="srcs"><a class="btn" href="https://thehackernews.com/2026/11/switzerland-confirms-ai-assisted.html" target="_blank" rel="noopener noreferrer"><svg class="ic " width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>The Hacker News</a><a class="btn" href="https://www.ncsc.gov.uk/blogs/familiar-weaknesses-exploited-faster-defending-against-agentic-cyber-attacks" target="_blank" rel="noopener noreferrer"><svg class="ic " width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>NCSC UK</a></div>
+ </div>
+</article><article class="item high">
+ <div class="thumb v-act"><svg class="ic " width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18"/><path d="M6 11l1.5-6h9L18 11"/><circle cx="8" cy="16" r="2.5"/><circle cx="16" cy="16" r="2.5"/><path d="M10.5 16h3"/></svg></div>
+ <div class="ibody">
+  <div class="badges"><span class="pill p-high">🟠 High</span><span class="pill p-late">Late (26 Nov)</span></div>
+  <h3>North Korea-linked PolinRider poisons 7,600+ GitHub repositories with a blockchain-controlled loader</h3>
+  <p class="why">Large, ongoing developer supply-chain campaign using stolen GitHub tokens to forge commits.</p>
+  
+  <details class="more"><summary>Full details</summary><dl><dt>1. Details</dt><dd>Apiiro: 7,609 repos / 2,330 accounts · 2,040 repos poisoned 27 Oct – 6 Nov 2026 · sub-cluster alongside Contagious Interview · active since at least 2025</dd><dt>2. Issue</dt><dd>A hidden Python loader is planted in GitHub repositories (often a small utils package or <code>conftest.py</code>), with commits rewritten through stolen developer tokens so they keep the original author and date.</dd><dt>3. How it is exploited</dt><dd>Importing the code reads the latest transaction from an Ethereum wallet, decodes it as JavaScript and runs it with Node.js; a second wallet supplies the C2 address. Lures include fake recruiting sites and take-home tests (T1195.002, T1102).</dd><dt>4. Affected</dt><dd>Developers cloning or running poisoned repos; npm packages (itsa-*, @adminide-stack/*) and a VS Code extension were also used.</dd><dt>5. Impact</dt><dd>Infostealers and a remote-access tool persisting in VS Code, Cursor, Discord and GitHub Desktop; theft of environment secrets, browser passwords, cookies and wallets.</dd></dl></details>
+  <div class="recs"><h4>Recommendations</h4><ul><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Run take-home tests and unknown repos only in a disposable VM.</span></li><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Look for unexpected <code>conftest.py</code> / utils files that start Node.js.</span></li><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Rotate GitHub tokens on any machine that ran a suspicious repo.</span></li><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Block the indicators below.</span></li></ul></div>
+  <div class="iocs"><h4>IOCs <small>defanged — do not open</small></h4><div class="chips"><span class="chip">103.179.142[.]155</span><span class="chip">95.135.181[.]84</span><span class="chip">accurasofthire[.]com</span><span class="chip">huntrole[.]org</span></div></div>
+  <div class="srcs"><a class="btn" href="https://thehackernews.com/2026/11/north-korea-linked-polinrider-poisons.html" target="_blank" rel="noopener noreferrer"><svg class="ic " width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>The Hacker News</a></div>
+ </div>
+</article></div>
+</details><details class="sec" open id="breaches">
+ <summary><span class="sicon v-bre"><svg class="ic " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v13c0 1.7 3.6 3 8 3s8-1.3 8-3v-13"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><span class="stitle">Data Breaches</span><span class="scount">2</span></summary>
+ <div class="sbody"><article class="item high">
+ <div class="thumb v-bre"><svg class="ic " width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v13c0 1.7 3.6 3 8 3s8-1.3 8-3v-13"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div>
+ <div class="ibody">
+  <div class="badges"><span class="pill p-high">🟠 High</span></div>
+  <h3>SAP confirms attack on its development infrastructure; source code on GitHub reportedly copied and altered</h3>
+  <p class="why">Major software vendor; SAP replaced signing keys and paused automated development operations.</p>
+  
+  <details class="more"><summary>Full details</summary><dl><dt>1. Details</dt><dd>Reported by Der Spiegel 26 Nov, confirmed by SAP 27 Nov · no threat actor named · not linked to the Gentlemen ransomware listing from October</dd><dt>2. What was exposed</dt><dd>Attackers reached SAP's development infrastructure; SAP says it found no access to customer business data.</dd><dt>3. How access was gained</dt><dd>Reportedly stolen employee authentication tokens used to copy and alter source code on GitHub (not confirmed by SAP).</dd><dt>4. Affected</dt><dd>SAP development / GitHub environment; no report of tampered code reaching customers.</dd><dt>5. Impact</dt><dd>Possible theft and modification of source code; SAP rotated signing keys and limited GitHub access.</dd></dl></details>
+  <div class="recs"><h4>Recommendations</h4><ul><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Watch SAP security notes and verify signatures on SAP software and updates.</span></li><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Review your own developer token lifetimes and GitHub access for staff.</span></li></ul></div>
+  
+  <div class="srcs"><a class="btn" href="https://www.securityweek.com/sap-confirms-cyberattack-source-code-reportedly-compromised/" target="_blank" rel="noopener noreferrer"><svg class="ic " width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>SecurityWeek</a></div>
+ </div>
+</article><article class="item high">
+ <div class="thumb v-bre"><svg class="ic " width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v13c0 1.7 3.6 3 8 3s8-1.3 8-3v-13"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div>
+ <div class="ibody">
+  <div class="badges"><span class="pill p-high">🟠 High</span></div>
+  <h3>myColorado app breach — ID photos and documents of ~100,000 residents accessed</h3>
+  <p class="why">Government ID images exposed; notifications start 27 Nov.</p>
+  
+  <details class="more"><summary>Full details</summary><dl><dt>1. Details</dt><dd>Colorado Governor's Office of Information Technology (OIT) · ~100,000 of ~2.1 million app users · detected by AWS threat detection · app offline since last week · no actor named</dd><dt>2. What was exposed</dt><dd>Unauthorized access to the app's "myCards and Documents" storage.</dd><dt>3. How access was gained</dt><dd>Not disclosed; attackers triggered automated threat detection in OIT's AWS environment.</dd><dt>4. Affected</dt><dd>myColorado users who uploaded documents.</dd><dt>5. Impact</dt><dd>Photos of government IDs, vehicle registrations and insurance cards exposed; no payment data.</dd></dl></details>
+  <div class="recs"><h4>Recommendations</h4><ul><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Expect identity-theft phishing using Colorado ID data.</span></li><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Affected users: watch for the OIT notice and consider a credit freeze.</span></li></ul></div>
+  
+  <div class="srcs"><a class="btn" href="https://www.securityweek.com/100000-potentially-impacted-by-colorado-data-breach/" target="_blank" rel="noopener noreferrer"><svg class="ic " width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>SecurityWeek</a></div>
+ </div>
+</article></div>
+</details>
+
+<section class="summary">
+ <h2>Summary to forward <button class="copy" type="button" onclick="copySummary(this)"><svg class="ic " width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a1 1 0 0 1 1-1h9"/></svg>Copy</button></h2>
+ <p id="sumtext">No <mark class="h-kev">CISA KEV</mark> additions on 26 or 27 Nov, but the Drupal, Idunno AntiCsrf and Optimizely <mark class="h-kev">KEV</mark> deadlines are today and the Mitel, Juniper, Xen Orchestra and Danfoss deadlines are tomorrow. A new Cacti <mark class="h-bad">zero-day</mark> (4HTTP2SHELL) with a public PoC gives RCE through the guest account and has <mark class="h-bad">no fix</mark> — disable the guest account. CERT-In flagged Mozilla Firefox / Thunderbird (<mark class="h-crit">Critical</mark>), the Linux kernel KVM and WhatsApp. Hex.pm was hacked through <mark class="h-cve">CVE-2026-129514</mark>, so Elixir users should change passwords and reset 2FA. Official Q-Dir and DesktopOK downloads were trojanized with a Python RAT. Switzerland confirmed AI-agent attacks breached critical infrastructure operators, North Korea-linked PolinRider poisoned 7,600+ GitHub repos, and SAP and the myColorado app disclosed breaches.</p>
+</section>
+<p class="foot">IOCs are defanged. Sources: approved feeds only.</p>
+</div>
+<script>
+function copySummary(b){
+ var t=document.getElementById("sumtext").innerText;
+ try{navigator.clipboard.writeText(t).then(function(){b.lastChild.textContent="Copied";});}catch(e){}
+}
+// "#snapshot": dark theme, banner + overview only, and record the height for the Chat picture
+if(location.hash==="#snapshot"){var r=document.documentElement;r.setAttribute("data-theme","dark");r.classList.add("snap");
+ var g=document.querySelector(".grid");r.setAttribute("data-shot-h",Math.ceil(g.getBoundingClientRect().bottom+window.scrollY+20));}
+</script>
+</body>
+</html>
