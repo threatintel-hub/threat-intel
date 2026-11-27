@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
 <title>Week 48 Threat Intel</title>
 <style>
 :root{--bg:#f3f5fa;--fg:#141a26;--muted:#5b6474}
@@ -38,11 +39,30 @@ h1 span{background:linear-gradient(90deg,#fff,#dfe6ff);-webkit-background-clip:t
 .dm{display:block;font-size:11px;color:#dfe6ff}
 .dc{display:block;font-size:11px;margin-top:3px;white-space:nowrap}
 .foot{text-align:center;color:var(--muted);font-size:12px;margin-top:14px}
+:root{--card:#fff;--line:#e3e7ef;--chip:#eef1f6;--crit:#d93025;--high:#e37400;--kev:#7a1fd1;--ok:#0b8043;--link:#2f54d9}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--card:#141a24;--line:#263042;--chip:#1d2533;--kev:#b47bff;--ok:#7ee2a8;--link:#8fb0ff}}
+:root[data-theme="dark"]{--card:#141a24;--line:#263042;--chip:#1d2533;--kev:#b47bff;--ok:#7ee2a8;--link:#8fb0ff}
+.sg{display:grid;grid-template-columns:220px 1fr 1fr;gap:14px;margin-top:16px}.sg2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.pn{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
+.pn h2{margin:0 0 10px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.big{display:flex;gap:10px;flex-wrap:wrap}.big div{flex:1;min-width:70px;background:var(--chip);border-radius:12px;padding:8px 10px}
+.big b{display:block;font-size:26px;line-height:1.1}.big span{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.big .c b{color:var(--crit)}.big .h b{color:var(--high)}.big .u b{color:var(--ok)}
+.dr{display:grid;grid-template-columns:62px 1fr 74px;gap:8px;align-items:center;font-size:13px;padding:4px 0;color:var(--fg);text-decoration:none}
+.dr .tr{display:flex;height:10px;border-radius:6px;overflow:hidden;background:var(--chip)}
+.dr .tr i{display:block;height:100%}.dr .tr .c{background:var(--crit)}.dr .tr .h{background:var(--high)}
+.dr small{color:var(--muted);text-align:right}
+.sr{display:grid;grid-template-columns:1fr 40px;font-size:13.5px;padding:4px 0;border-top:1px dashed var(--line)}.sr:first-of-type{border-top:0}.sr b{text-align:right}
+.ul{list-style:none;margin:0;padding:0}.ul li{padding:7px 0;border-top:1px dashed var(--line);font-size:13.5px}.ul li:first-child{border-top:0}
+.ul .tag{font-size:11px;font-weight:700;color:var(--muted);margin-right:6px}.ul a{color:var(--fg);text-decoration:none}.ul a:hover{color:var(--link)}
+.ul .due{font-weight:800;color:var(--kev);margin-right:6px}.ul .soon .due{color:var(--crit)}.ul .left{float:right;font-size:12px;color:var(--muted)}
+.ul .none{color:var(--muted)}
 @media (max-width:700px){
  .hero{padding:22px 18px 18px}
  .art{position:static;display:block;width:170px;margin:-6px auto 2px}
  h1{font-size:28px;max-width:none}.quote{max-width:none}
  .days{gap:5px}.dd{font-size:16px}.dc{font-size:10px}
+ .sg,.sg2{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -54,8 +74,18 @@ h1 span{background:linear-gradient(90deg,#fff,#dfe6ff);-webkit-background-clip:t
  <h1><span>Week 48 Threat Intel</span></h1>
  <div class="dates">23 Nov – 29 Nov 2026</div>
  <blockquote class="quote"><p>Cybersecurity is much more than a matter of IT.</p><cite>— Stéphane Nappo</cite></blockquote>
- <ul class="days"><li class="has"><a href="2026-11-23/card.html"><span class="dw">Mon</span><span class="dd">23</span><span class="dm">Nov</span></a></li><li class="has"><a href="2026-11-24/card.html"><span class="dw">Tue</span><span class="dd">24</span><span class="dm">Nov</span></a></li><li class="has"><a href="2026-11-25/card.html"><span class="dw">Wed</span><span class="dd">25</span><span class="dm">Nov</span></a></li><li class="has"><a href="2026-11-26/card.html"><span class="dw">Thu</span><span class="dd">26</span><span class="dm">Nov</span><span class="dc">🔴 6 · 🟠 12</span></a></li><li><div><span class="dw">Fri</span><span class="dd">27</span><span class="dm">Nov</span></div></li><li><div><span class="dw">Sat</span><span class="dd">28</span><span class="dm">Nov</span></div></li><li><div><span class="dw">Sun</span><span class="dd">29</span><span class="dm">Nov</span></div></li></ul>
+ <ul class="days"><li class="has"><a href="2026-11-23/card.html"><span class="dw">Mon</span><span class="dd">23</span><span class="dm">Nov</span><span class="dc">🔴 3 · 🟠 3</span></a></li><li class="has"><a href="2026-11-24/card.html"><span class="dw">Tue</span><span class="dd">24</span><span class="dm">Nov</span><span class="dc">🔴 5 · 🟠 10</span></a></li><li class="has"><a href="2026-11-25/card.html"><span class="dw">Wed</span><span class="dd">25</span><span class="dm">Nov</span><span class="dc">🔴 4 · 🟠 8</span></a></li><li class="has"><a href="2026-11-26/card.html"><span class="dw">Thu</span><span class="dd">26</span><span class="dm">Nov</span><span class="dc">🔴 6 · 🟠 12</span></a></li><li class="has"><a href="2026-11-27/card.html"><span class="dw">Fri</span><span class="dd">27</span><span class="dm">Nov</span><span class="dc">🔴 4 · 🟠 6</span></a></li><li><div><span class="dw">Sat</span><span class="dd">28</span><span class="dm">Nov</span></div></li><li><div><span class="dw">Sun</span><span class="dd">29</span><span class="dm">Nov</span></div></li></ul>
 </header>
+<section class="sg">
+ <div class="pn"><h2>This week</h2><div class="big"><div class="c"><b>22</b><span>Critical</span></div><div class="h"><b>39</b><span>High</span></div></div>
+  <p style="margin:10px 0 0;font-size:12.5px;color:var(--muted)">5 day(s) reported so far</p></div>
+ <div class="pn"><h2>Per day</h2><a class="dr" href="2026-11-23/card.html"><span>Mon 23</span><span class="tr"><i class="c" style="width:17%"></i><i class="h" style="width:17%"></i></span><small>🔴 3 · 🟠 3</small></a><a class="dr" href="2026-11-24/card.html"><span>Tue 24</span><span class="tr"><i class="c" style="width:28%"></i><i class="h" style="width:56%"></i></span><small>🔴 5 · 🟠 10</small></a><a class="dr" href="2026-11-25/card.html"><span>Wed 25</span><span class="tr"><i class="c" style="width:22%"></i><i class="h" style="width:44%"></i></span><small>🔴 4 · 🟠 8</small></a><a class="dr" href="2026-11-26/card.html"><span>Thu 26</span><span class="tr"><i class="c" style="width:33%"></i><i class="h" style="width:67%"></i></span><small>🔴 6 · 🟠 12</small></a><a class="dr" href="2026-11-27/card.html"><span>Fri 27</span><span class="tr"><i class="c" style="width:22%"></i><i class="h" style="width:33%"></i></span><small>🔴 4 · 🟠 6</small></a></div>
+ <div class="pn"><h2>By section</h2><div class="sr"><span>🛡 Vulnerability / CVE</span><b>36</b></div><div class="sr"><span>📦 Vulnerable Dependency</span><b>7</b></div><div class="sr"><span>🔒 Ransomware</span><b>1</b></div><div class="sr"><span>🎣 Phishing / Malware</span><b>4</b></div><div class="sr"><span>🕵 Threat Actors</span><b>5</b></div><div class="sr"><span>💥 Data Breaches</span><b>8</b></div></div>
+</section>
+<section class="sg2">
+ <div class="pn"><h2>⚡ Most urgent this week</h2><ul class="ul"><li><span class="tag">Fri 27</span><a href="2026-11-27/card.html"><b>CISA KEV due today (27 Nov)</b></a><br><small>finish Drupal, Idunno AntiCsrf and Optimizely fixes; Mitel / Juniper / Xen Orchestra / Danfoss due 28 Nov</small></li><li><span class="tag">Fri 27</span><a href="2026-11-27/card.html"><b>Cacti 4HTTP2SHELL (unpatched, PoC)</b></a><br><small>disable the guest account, restrict web access, check poller entries</small></li><li><span class="tag">Fri 27</span><a href="2026-11-27/card.html"><b>Firefox / Thunderbird (CERT-In Critical)</b></a><br><small>update to Firefox 161, ESR 153.8 / 115.46, Thunderbird 161 / 153.8</small></li><li><span class="tag">Fri 27</span><a href="2026-11-27/card.html"><b>Hex.pm accounts</b></a><br><small>change password, reset 2FA, rotate API keys, use repo.hex.pm only</small></li><li><span class="tag">Thu 26</span><a href="2026-11-26/card.html"><b>Drupal CVE-2026-136716</b></a><br><small>exploited · update, run update.php, block install.php, check user 1</small></li><li><span class="tag">Thu 26</span><a href="2026-11-26/card.html"><b>Mitel MiCollab (KEV, due 28 Nov)</b></a><br><small>update to 10.3.0.18+ or block external AWV access</small></li><li><span class="tag">Thu 26</span><a href="2026-11-26/card.html"><b>Danfoss AK-SM 800A (KEV + unpatched)</b></a><br><small>take controllers off the internet, enable Strict mode</small></li><li><span class="tag">Thu 26</span><a href="2026-11-26/card.html"><b>Juniper SSR / Xen Orchestra (KEV, due 28 Nov)</b></a><br><small>upgrade to fixed releases</small></li></ul></div>
+ <div class="pn"><h2>⏰ Open CISA KEV deadlines</h2><ul class="ul"><li class="soon"><span class="due">27 Nov</span>Drupal &quot;Fail2Install&quot;<span class="left">today</span></li><li class="soon"><span class="due">27 Nov</span>Optimizely Web Experimentation<span class="left">today</span></li><li class="soon"><span class="due">28 Nov</span>Danfoss AK-SM 800A refrigeration controllers<span class="left">1 day</span></li><li class="soon"><span class="due">28 Nov</span>HPE Juniper Session Smart Conductor / Router<span class="left">1 day</span></li><li class="soon"><span class="due">28 Nov</span>Mitel MiCollab AWV<span class="left">1 day</span></li><li class="soon"><span class="due">28 Nov</span>Vates Xen Orchestra<span class="left">1 day</span></li></ul></div>
+</section>
 <p class="foot">Daily updates for this week are posted in the Week 48 thread. Tap a day to open its card.</p>
 </div>
 <script>
