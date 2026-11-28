@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Threat Intel — 28 Nov 2026</title>
+<style>
+:root{--bg:#f3f5fa;--card:#ffffff;--fg:#141a26;--muted:#5b6474;--line:#e3e7ef;--chip:#eef1f6;--soft:#f7f8fc;
+--crit:#d93025;--high:#e37400;--med:#c99a00;--ok:#188038;--kev:#7a1fd1;--link:#2f54d9;--shadow:0 1px 2px rgba(16,24,40,.06),0 6px 20px rgba(16,24,40,.06)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b0f17;--card:#141a24;--fg:#e7eaf0;--muted:#98a2b3;--line:#263042;--chip:#1d2533;--soft:#111723;
+--link:#8fb0ff;--kev:#b47bff;--shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{--bg:#0b0f17;--card:#141a24;--fg:#e7eaf0;--muted:#98a2b3;--line:#263042;--chip:#1d2533;--soft:#111723;--link:#8fb0ff;--kev:#b47bff;--shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{max-width:940px;margin:0 auto;padding:20px 16px 48px}
+a{color:var(--link)}
+code,.chip{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px;background:var(--chip);border-radius:6px;padding:1px 6px;word-break:break-word}
+.ic{flex:none;vertical-align:middle}
+.hero{position:relative;overflow:hidden;border-radius:20px;padding:26px 26px 22px;color:#fff;
+ background:radial-gradient(120% 140% at 100% 0%,#3b4fc4 0%,#1b2459 45%,#0d1330 100%);box-shadow:var(--shadow)}
+.hero .art{position:absolute;right:-10px;top:-6px;width:300px;height:auto;opacity:.95}
+.hero .kicker{display:inline-flex;align-items:center;gap:6px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#dfe6ff;font-weight:700}
+.hero h1{margin:8px 0 4px;font-size:30px;line-height:1.15;max-width:60%}
+.hero .date{font-size:17px;color:#eef2ff}
+.hero .meta{margin-top:14px;font-size:12.5px;color:#d0d8f5;max-width:62%}
+.hero .flags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;max-width:66%}
+.flag{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:4px 11px;font-size:12.5px;color:#eef2ff;backdrop-filter:blur(4px)}
+.flag b{color:#fff}
+.grid{display:grid;grid-template-columns:230px 1fr 1fr;gap:14px;margin:16px 0}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow)}
+.panel h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 0 10px}
+.sev{display:flex;align-items:center;gap:14px}
+.donut{width:96px;height:96px}.donut .dn{font-size:22px;font-weight:800;fill:var(--fg)}.donut .dl{font-size:10px;fill:var(--muted)}
+.legend div{display:flex;align-items:center;gap:8px;font-size:14px;margin:4px 0}
+.sw{width:10px;height:10px;border-radius:3px}
+.bar{display:grid;grid-template-columns:24px 1fr 70px 18px;align-items:center;gap:8px;font-size:13px;color:var(--fg);text-decoration:none;padding:3px 0}
+.bar .bt{height:7px;background:var(--chip);border-radius:9px;overflow:hidden}.bar .bt span{display:block;height:100%;border-radius:9px}
+.bar .bn{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bi{display:grid;place-items:center;width:24px;height:24px;border-radius:7px;color:#fff}
+.acts{list-style:none;margin:0;padding:0}
+.acts li{display:flex;gap:10px;padding:7px 0;border-top:1px dashed var(--line)}.acts li:first-child{border-top:0;padding-top:0}
+.acts .dot{flex:none;width:10px;height:10px;border-radius:50%;margin-top:6px;background:currentColor;box-shadow:0 0 0 4px color-mix(in srgb,currentColor 18%,transparent)}
+.acts li.crit{color:var(--crit)}.acts li.high{color:var(--high)}
+.acts div{color:var(--fg);font-size:13.5px}.acts div span{display:block;color:var(--muted);font-size:12.5px}
+.acts .none{color:var(--muted);font-size:13.5px}
+.v-cve{background:linear-gradient(135deg,#ff7a59,#d93025)}.v-dep{background:linear-gradient(135deg,#ffb547,#e37400)}
+.v-ran{background:linear-gradient(135deg,#c56cf0,#7a1fd1)}.v-phi{background:linear-gradient(135deg,#4fc3f7,#1a73e8)}
+.v-act{background:linear-gradient(135deg,#6ee7b7,#0f9d58)}.v-bre{background:linear-gradient(135deg,#94a3b8,#475569)}
+details.sec{background:var(--card);border:1px solid var(--line);border-radius:18px;margin:14px 0;box-shadow:var(--shadow);overflow:hidden}
+details.sec>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:14px 18px}
+details.sec>summary::-webkit-details-marker{display:none}
+details.sec>summary::after{content:"";width:9px;height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);margin-left:4px;transition:transform .2s}
+details.sec:not([open])>summary::after{transform:rotate(-45deg)}
+.sicon{display:grid;place-items:center;width:38px;height:38px;border-radius:11px;color:#fff;flex:none}
+.stitle{font-weight:750;font-size:17px;flex:1}
+.scount{background:var(--chip);border-radius:999px;padding:1px 10px;font-weight:700;font-size:13px;color:var(--muted)}
+.sbody{padding:2px 18px 16px}
+.empty{color:var(--muted);margin:2px 0 4px;padding:12px 14px;background:var(--soft);border-radius:12px;border:1px dashed var(--line)}
+.item{display:grid;grid-template-columns:56px 1fr;gap:14px;padding:16px;border:1px solid var(--line);border-radius:14px;margin-top:12px;background:var(--soft);position:relative}
+.item::before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:4px;border-radius:0 4px 4px 0}
+.item.crit::before{background:var(--crit)}.item.high::before{background:var(--high)}
+.thumb{width:56px;height:56px;border-radius:14px;display:grid;place-items:center;color:#fff;box-shadow:inset 0 -10px 20px rgba(0,0,0,.12)}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
+.pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:11.5px;font-weight:700;white-space:nowrap}
+.p-crit{background:color-mix(in srgb,var(--crit) 14%,transparent);color:var(--crit)}
+.p-high{background:color-mix(in srgb,var(--high) 16%,transparent);color:var(--high)}
+.p-kev{background:color-mix(in srgb,var(--kev) 15%,transparent);color:var(--kev)}
+.p-due{border:1px solid var(--crit);color:var(--crit)}
+.p-late{border:1px solid var(--kev);color:var(--kev)}
+.item h3{margin:0 0 4px;font-size:16.5px;line-height:1.35}
+.why{margin:0 0 8px;color:var(--muted);font-size:13.5px}
+.score{display:flex;align-items:center;gap:8px;margin:6px 0 4px}
+.meter{width:120px;height:7px;border-radius:9px;background:var(--chip);overflow:hidden}.meter span{display:block;height:100%;border-radius:9px}
+.meter.crit span{background:linear-gradient(90deg,#ff9a7a,var(--crit))}.meter.high span{background:linear-gradient(90deg,#ffd08a,var(--high))}.meter.med span{background:var(--med)}
+.mv{font-size:13px}.mv.crit{color:var(--crit)}.mv.high{color:var(--high)}
+details.more{margin:8px 0}details.more>summary{cursor:pointer;color:var(--link);font-size:13px;font-weight:600}
+dl{display:grid;grid-template-columns:180px 1fr;gap:6px 14px;margin:10px 0 0;font-size:14px}
+dt{color:var(--muted);font-weight:600;font-size:13px}dd{margin:0}
+h4{margin:10px 0 6px;font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}h4 small{text-transform:none;letter-spacing:0;font-weight:500}
+.recs ul{list-style:none;margin:0;padding:0}.recs li{display:flex;gap:8px;align-items:flex-start;font-size:14px;margin:4px 0}
+.ok{color:var(--ok);margin-top:2px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.srcs{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.btn{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-size:13px;font-weight:600;padding:6px 12px;border-radius:9px;border:1px solid var(--line);background:var(--card)}
+.btn:hover{border-color:var(--link)}
+.tablewrap{margin-top:16px;overflow-x:auto}.th4{margin-top:4px}
+td .h-cve{white-space:normal;word-break:break-word}
+@media (min-width:761px){th:first-child,td:first-child{width:34px}th:last-child,td:last-child{width:190px}}
+td .p-late{margin-top:4px}
+.rmeta{display:grid;gap:8px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
+.rm{display:grid;grid-template-columns:64px 1fr;gap:10px;align-items:start}
+.rl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);padding-top:2px}
+.rm .fix{justify-self:start}.btn.sm{padding:3px 9px;font-size:12.5px;justify-self:start}
+table{width:100%;border-collapse:separate;border-spacing:0;font-size:13.5px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th,td{text-align:left;padding:10px;border-top:1px solid var(--line);vertical-align:top}
+thead th{border-top:0;background:var(--soft);color:var(--muted);font-weight:650;font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+td .sub{color:var(--muted);font-size:12.5px}td .score{margin:0}td .meter{width:70px}
+.fix{background:color-mix(in srgb,var(--ok) 12%,transparent);color:var(--ok);border-radius:6px;padding:1px 6px;font-weight:600;font-size:12.5px}
+.also{font-size:13px;color:var(--muted);margin:12px 0 0}
+.summary{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow);margin-top:14px}
+.summary h2{display:flex;align-items:center;justify-content:space-between;margin:0 0 8px;font-size:17px}
+.copy{display:inline-flex;gap:6px;align-items:center;font:inherit;font-size:13px;font-weight:600;padding:6px 12px;border-radius:9px;border:1px solid var(--line);background:var(--soft);color:var(--fg);cursor:pointer}
+.foot{text-align:center;color:var(--muted);font-size:12px;margin-top:18px}
+@media (max-width:760px){
+ .hbox{max-width:none}.hp{grid-template-columns:1fr;gap:4px}.hp .fl{justify-self:start}
+ .grid{grid-template-columns:1fr}
+ .hero h1,.hero .meta,.hero .flags{max-width:none}.hero .art{position:static;display:block;width:180px;margin:-8px auto 4px}
+ dl{grid-template-columns:1fr}dt{margin-top:6px}
+ .item{grid-template-columns:1fr}.thumb{width:44px;height:44px;border-radius:12px}
+ table,thead,tbody,tr,th,td{display:block}thead{display:none}table{border:0}
+ tr{border:1px solid var(--line);border-radius:12px;margin-bottom:10px;padding:8px 10px;background:var(--soft)}td{border:0;padding:3px 0}
+ td::before{content:attr(data-l);display:block;font-size:11px;text-transform:uppercase;color:var(--muted);font-weight:650}
+}
+@media print{details.sec{break-inside:avoid}.copy{display:none}}
+.snap details.sec,.snap .summary,.snap .foot,.snap .grid2{display:none}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:0 0 16px}
+.dls{list-style:none;margin:0;padding:0}
+.dls li{display:grid;grid-template-columns:58px 1fr auto;gap:4px 10px;align-items:baseline;padding:7px 0;border-top:1px dashed var(--line);font-size:13.5px}
+.dls li:first-child{border-top:0}
+.dls .dd{font-weight:800;color:var(--kev)}.dls .dleft{font-size:12px;font-weight:700;color:var(--muted);text-align:right}
+.dls li.soon .dleft{color:var(--high)}.dls li.now .dleft{color:var(--crit)}.dls li.now .dd{color:var(--crit)}
+.dls .dfrom{grid-column:2/4;font-size:11.5px;color:var(--muted);text-decoration:none}.dls .dfrom:hover{color:var(--link)}
+.dls .none,.usl .none{color:var(--muted)}
+.usl .dot{flex:none;width:10px;height:10px;border-radius:50%;margin-top:6px}.usl .dot.r{background:var(--crit)}.usl .dot.o{background:var(--high)}
+.stk{margin:8px 0 0;font-size:12px;color:var(--muted)}
+.p-us{background:color-mix(in srgb,#0f9d58 16%,transparent);color:#0b8043}
+.p-fu{border:1px solid var(--link);color:var(--link);text-decoration:none}
+.ep{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted);margin-left:14px}
+.meter.sm{width:60px;height:6px}
+td .ep{margin:4px 0 0}
+.flag.fu{background:rgba(15,157,88,.28);border-color:rgba(126,226,168,.55)}.flag.fu b{color:#a8f0c6}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .p-us{color:#7ee2a8}}
+:root[data-theme="dark"] .p-us{color:#7ee2a8}
+@media (max-width:760px){.grid2{grid-template-columns:1fr}}
+mark{background:transparent;color:inherit}
+:root{--warn:#b26a00}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--warn:#ffd166}}
+:root[data-theme="dark"]{--warn:#ffd166}
+.h-crit,.h-due,.h-bad{color:var(--crit);font-weight:700}.h-high{color:var(--high);font-weight:700}
+.h-kev{color:var(--kev);font-weight:700}.h-score,.h-num{font-weight:700}.h-warn{color:var(--warn);font-weight:700}
+.h-cve{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.9em;color:var(--link);font-weight:600;
+ background:color-mix(in srgb,var(--link) 11%,transparent);padding:0 5px;border-radius:5px;white-space:nowrap}
+.hero .h-crit,.hero .h-due,.hero .h-bad{color:#ff9b8f}.hero .h-high{color:#ffc35e}.hero .h-kev{color:#d9c2ff}
+.hero .h-cve{color:#b3dbff;background:rgba(255,255,255,.12)}.hero .h-num,.hero .h-score{color:#fff}.hero .h-warn{color:#ffd166}
+.flag.fc{background:rgba(217,48,37,.28);border-color:rgba(255,155,143,.55)}.flag.fc b{color:#ffb4aa}
+.flag.fh{background:rgba(227,116,0,.26);border-color:rgba(255,195,94,.55)}.flag.fh b{color:#ffd38a}
+.fl{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:6px;padding:1px 7px;margin-right:7px;vertical-align:1px}
+.fl-kev{background:#7a1fd1;color:#fff}.fl-cert{background:#0b8043;color:#fff}.fl-note{background:#b26a00;color:#fff}
+.hbox{position:relative;margin-top:14px;max-width:68%;background:rgba(10,14,40,.38);border:1px solid rgba(255,255,255,.18);
+ border-radius:16px;padding:6px 16px;backdrop-filter:blur(6px)}
+.hp{display:grid;grid-template-columns:84px 1fr;gap:10px;align-items:start;padding:9px 0;border-top:1px dashed rgba(255,255,255,.16)}
+.hp:first-child{border-top:0}
+.hp .fl{margin:2px 0 0;text-align:center}
+.hp ul{margin:0;padding:0 0 0 16px;font-size:13.5px;line-height:1.5;color:#eef2ff}
+.hp li{margin:1px 0}.hp li::marker{color:rgba(255,255,255,.55)}
+.fl-win{background:#3b4fc4;color:#fff}
+.win{margin-top:8px;font-size:13.5px;color:#dfe6ff}.win .fl{margin-right:8px}.fl-src{background:#475569;color:#fff}
+.hero .meta .ml{color:#fff;text-transform:uppercase;font-size:11px;letter-spacing:.08em;margin-right:2px}
+.hero .meta .sn{color:#c9d6ff;font-weight:600}
+@media (max-width:760px){.hbox{max-width:none;padding:4px 12px}.hp{grid-template-columns:1fr;gap:5px}.hp .fl{justify-self:start}}
+body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+p,li,dd{text-wrap:pretty}
+dl{gap:12px 18px}dt{padding-top:1px}
+.pts{margin:0;padding:0 0 0 18px}.pts li{margin:0 0 4px;line-height:1.55}.pts li:last-child{margin-bottom:0}
+.pts li::marker{color:var(--muted)}
+.pts.tight{padding-left:15px;font-size:13px}.pts.tight li{margin:0 0 2px}
+.pts.sum{padding-left:20px}.pts.sum li{margin:0 0 8px;font-size:14.5px;line-height:1.6}
+.why{line-height:1.5}.recs li{line-height:1.5}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero" style="background:radial-gradient(120% 140% at 100% 0%,#c4772f 0%,#4a2a1a 45%,#1a0f0a 100%)">
+ <svg class="art" viewBox="0 0 260 190" aria-hidden="true"><defs><radialGradient id="glow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#ffd39a" stop-opacity=".5"/><stop offset="1" stop-color="#ffd39a" stop-opacity="0"/></radialGradient><linearGradient id="mg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffc47a"/><stop offset="1" stop-color="#c47a2f"/></linearGradient><linearGradient id="beam" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffd39a" stop-opacity=".55"/><stop offset="1" stop-color="#ffd39a" stop-opacity="0"/></linearGradient></defs><circle cx="130" cy="95" r="92" fill="url(#glow)"/><g fill="none" stroke="#ffd39a" stroke-opacity=".3"><circle cx="130" cy="95" r="66"/><circle cx="130" cy="95" r="84" stroke-dasharray="3 5"/></g><g stroke="#ffd39a" stroke-opacity=".4" stroke-width="1.1"><path d="M233.3 154.3 L196.1 174.4"/><path d="M233.3 154.3 L191.9 131.6"/><path d="M196.1 174.4 L154.8 177.3"/><path d="M196.1 174.4 L191.9 131.6"/><path d="M154.8 177.3 L125.5 175.2"/><path d="M60.7 138.9 L66.5 92.2"/><path d="M60.7 138.9 L84.1 167.7"/><path d="M66.5 92.2 L108.3 31.1"/><path d="M231.4 66.8 L204.0 82.9"/><path d="M231.4 66.8 L191.9 131.6"/><path d="M204.0 82.9 L108.3 31.1"/><path d="M204.0 82.9 L191.9 131.6"/><path d="M125.5 175.2 L84.1 167.7"/></g><circle cx="233.3" cy="154.3" r="2.7" fill="#ffd39a" opacity=".85"/><circle cx="196.1" cy="174.4" r="2.4" fill="#ffd39a" opacity=".85"/><circle cx="154.8" cy="177.3" r="2.2" fill="#ffd39a" opacity=".85"/><circle cx="60.7" cy="138.9" r="4.5" fill="#ff6b5e"/><circle cx="60.7" cy="138.9" r="9.5" fill="none" stroke="#ff6b5e" stroke-opacity=".5"/><circle cx="66.5" cy="92.2" r="2.8" fill="#ffd39a" opacity=".85"/><circle cx="231.4" cy="66.8" r="4.5" fill="#ff6b5e"/><circle cx="231.4" cy="66.8" r="9.5" fill="none" stroke="#ff6b5e" stroke-opacity=".5"/><circle cx="204.0" cy="82.9" r="2.3" fill="#ffd39a" opacity=".85"/><circle cx="108.3" cy="31.1" r="3.2" fill="#ffd39a" opacity=".85"/><circle cx="191.9" cy="131.6" r="4.5" fill="#ff6b5e"/><circle cx="191.9" cy="131.6" r="9.5" fill="none" stroke="#ff6b5e" stroke-opacity=".5"/><circle cx="125.5" cy="175.2" r="2.8" fill="#ffd39a" opacity=".85"/><circle cx="84.1" cy="167.7" r="2.4" fill="#ffd39a" opacity=".85"/><g transform="rotate(-0.4 130 95)"><path d="M130.0 49.0 l39.1 18.4 v23.0 c0 27.6 -17.6 43.7 -39.1 50.6 c-21.5 -6.9 -39.1 -23.0 -39.1 -50.6 v-23.0z" fill="url(#mg)" stroke="#e6ebff" stroke-width="2"/><path d="M127.9 56 l6.0 10.1 l-4.1 10.6 l7.7 12.3 l-7.1 11.7 l7.3 9.3" fill="none" stroke="#ff6b5e" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/><g stroke="#fff" stroke-opacity=".25"><path d="M100 80h60"/><path d="M98 96h64"/><path d="M102 112h56"/></g></g><circle cx="50.5" cy="70.6" r="13" fill="#1a0f0a" stroke="#ffd39a" stroke-width="1.5"/><g transform="translate(43.3 63.4) scale(.6)" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></g><circle cx="193.2" cy="44.9" r="13" fill="#1a0f0a" stroke="#ffd39a" stroke-width="1.5"/><g transform="translate(186.0 37.7) scale(.6)" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18"/><path d="M6 11l1.5-6h9L18 11"/><circle cx="8" cy="16" r="2.5"/><circle cx="16" cy="16" r="2.5"/></g><circle cx="146.4" cy="169.5" r="13" fill="#1a0f0a" stroke="#ffd39a" stroke-width="1.5"/><g transform="translate(139.2 162.3) scale(.6)" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v13c0 1.7 3.6 3 8 3s8-1.3 8-3v-13"/></g></svg>
+ <span class="kicker"><svg class="ic " width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg> Daily Threat Intel</span>
+ <h1>Threat Intel Update</h1>
+ <div class="date">28 Nov 2026 (Sat)</div>
+ <div class="win"><span class="fl fl-win">Window</span>28 Nov 2026, plus a recheck of 27 Nov</div>
+ <div class="flags">
+  <span class="flag fc"><b>🔴 3</b> critical</span><span class="flag fh"><b>🟠 4</b> high</span>
+ </div>
+ <div class="hbox"><div class="hp"><span class="fl fl-kev">KEV</span><ul><li><mark class="h-num">3 added</mark> 27 Nov after our 27 Nov report: GeoServer <mark class="h-cve">CVE-2026-120705</mark> and <mark class="h-cve">CVE-2026-129243</mark>, Drupal <mark class="h-cve">CVE-2026-136716</mark>, all <mark class="h-due">due 30 Nov</mark></li><li>None added 28 Nov so far (catalog 2026.11.27)</li><li>Due today 28 Nov: Mitel MiCollab (4), Juniper Session Smart, Xen Orchestra, Danfoss (2)</li></ul></div><div class="hp"><span class="fl fl-cert">CERT-In</span><ul><li>No notes on 28 Nov so far</li><li>2 <mark class="h-crit">Critical</mark> notes late on 27 Nov: Drupal CIVN-2026-0579, Mitel MiCollab CIVN-2026-0580</li></ul></div><div class="hp"><span class="fl fl-note">Note</span><ul><li>Saturday, light news day — most items are late ones from 27 Nov</li><li>CISA alerts page returned 404, so <mark class="h-kev">KEV</mark> data comes from the official <mark class="h-kev">KEV</mark> feed</li><li>BleepingComputer not fetched (refuses scripts)</li><li>UK DWP took some online services offline after a cyber incident (The Record, 27 Nov); no details yet, so not listed as a breach</li></ul></div></div>
+</header>
+
+<div class="grid">
+ <section class="panel"><h2>Severity</h2>
+  <div class="sev"><svg class="donut" viewBox="0 0 90 90" role="img" aria-label="3 critical, 4 high">
+ <circle cx="45" cy="45" r="34" fill="none" stroke="var(--high)" stroke-width="12"/>
+ <circle cx="45" cy="45" r="34" fill="none" stroke="var(--crit)" stroke-width="12" stroke-dasharray="91.6 213.6" transform="rotate(-90 45 45)"/>
+ <text x="45" y="43" text-anchor="middle" class="dn">7</text><text x="45" y="58" text-anchor="middle" class="dl">items</text></svg><div class="legend">
+   <div><span class="sw" style="background:var(--crit)"></span>Critical <b>3</b></div>
+   <div><span class="sw" style="background:var(--high)"></span>High <b>4</b></div></div></div>
+ </section>
+ <section class="panel"><h2>By section</h2><a class="bar" href="#cve"><span class="bi v-cve"><svg class="ic " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M12 8v5"/><path d="M12 16.5h.01"/></svg></span><span class="bn">Vulnerability / CVE</span><span class="bt"><span class="v-cve" style="width:100%"></span></span><b>3</b></a><a class="bar" href="#dependency"><span class="bi v-dep"><svg class="ic " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7.5l9-4 9 4-9 4z"/><path d="M3 7.5v9l9 4 9-4v-9"/><path d="M12 11.5v9"/></svg></span><span class="bn">Vulnerable Dependency</span><span class="bt"><span class="v-dep" style="width:0%"></span></span><b>0</b></a><a class="bar" href="#ransomware"><span class="bi v-ran"><svg class="ic " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7.5a4 4 0 0 1 8 0V11"/><path d="M12 15v2"/></svg></span><span class="bn">Ransomware</span><span class="bt"><span class="v-ran" style="width:0%"></span></span><b>0</b></a><a class="bar" href="#phishing"><span class="bi v-phi"><svg class="ic " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><span class="bn">Phishing / Malware</span><span class="bt"><span class="v-phi" style="width:33%"></span></span><b>1</b></a><a class="bar" href="#actors"><span class="bi v-act"><svg class="ic " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18"/><path d="M6 11l1.5-6h9L18 11"/><circle cx="8" cy="16" r="2.5"/><circle cx="16" cy="16" r="2.5"/><path d="M10.5 16h3"/></svg></span><span class="bn">Threat Actors</span><span class="bt"><span class="v-act" style="width:33%"></span></span><b>1</b></a><a class="bar" href="#breaches"><span class="bi v-bre"><svg class="ic " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v13c0 1.7 3.6 3 8 3s8-1.3 8-3v-13"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><span class="bn">Data Breaches</span><span class="bt"><span class="v-bre" style="width:67%"></span></span><b>2</b></a></section>
+ <section class="panel"><h2>Act now</h2><ul class="acts"><li class="crit"><span class="dot"></span><div><b><mark class="h-kev">CISA KEV</mark> due today (28 Nov)</b><span>Mitel MiCollab, Juniper Session Smart, Xen Orchestra, Danfoss AK-SM 800A</span></div></li><li class="crit"><span class="dot"></span><div><b>GeoServer (<mark class="h-kev">KEV</mark>, <mark class="h-due">due 30 Nov</mark>)</b><span>Update to 2.27.7 / 2.28.6 / 3.0.2 or restrict access; rotate secrets</span></div></li><li class="crit"><span class="dot"></span><div><b>Drupal <mark class="h-cve">CVE-2026-136716</mark> (<mark class="h-kev">KEV</mark>, <mark class="h-due">due 30 Nov</mark>)</b><span>Update, run update.php, block install.php, check user 1</span></div></li><li class="high"><span class="dot"></span><div><b>Vinci RAT "Setup Assistant"</b><span>Remove the Store app, hunt the 10-minute PowerShell task</span></div></li><li class="high"><span class="dot"></span><div><b>pCloud Pass users</b><span>Remove unknown devices, ignore Master Password requests</span></div></li></ul></section>
+</div>
+<div class="grid2">
+ <section class="panel"><h2>⏰ CISA KEV deadlines</h2><ul class="dls"><li class="now"><span class="dd">28 Nov</span><span class="dn">Danfoss AK-SM 800A refrigeration controllers</span><span class="dleft">today</span><a class="dfrom" href="../../2026-W48/2026-11-26/card.html">from 26 Nov</a></li><li class="now"><span class="dd">28 Nov</span><span class="dn">HPE Juniper Session Smart Conductor / Router</span><span class="dleft">today</span><a class="dfrom" href="../../2026-W48/2026-11-26/card.html">from 26 Nov</a></li><li class="now"><span class="dd">28 Nov</span><span class="dn">Mitel MiCollab AWV</span><span class="dleft">today</span><a class="dfrom" href="../../2026-W48/2026-11-28/card.html">from 28 Nov</a></li><li class="now"><span class="dd">28 Nov</span><span class="dn">Vates Xen Orchestra</span><span class="dleft">today</span><a class="dfrom" href="../../2026-W48/2026-11-26/card.html">from 26 Nov</a></li><li class="soon"><span class="dd">30 Nov</span><span class="dn">Drupal</span><span class="dleft">2 days</span><a class="dfrom" href="../../2026-W48/2026-11-28/card.html">from 28 Nov</a></li><li class="soon"><span class="dd">30 Nov</span><span class="dn">GeoServer</span><span class="dleft">2 days</span><a class="dfrom" href="../../2026-W48/2026-11-28/card.html">from 28 Nov</a></li></ul></section>
+ <section class="panel"><h2>🎯 Affects us</h2><ul class="acts usl"><li class="none">Add the products we run to <code>stack.txt</code> to switch this on.</li></ul></section>
+</div>
+
+<details class="sec" open id="cve">
+ <summary><span class="sicon v-cve"><svg class="ic " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M12 8v5"/><path d="M12 16.5h.01"/></svg></span><span class="stitle">Vulnerability / CVE</span><span class="scount">3</span></summary>
+ <div class="sbody"><article class="item crit">
+ <div class="thumb v-cve"><svg class="ic " width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M12 8v5"/><path d="M12 16.5h.01"/></svg></div>
+ <div class="ibody">
+  <div class="badges"><span class="pill p-crit">🔴 Critical</span><span class="pill p-kev">CISA KEV</span><span class="pill p-due">Due 30 Nov</span><span class="pill p-late">Late (27 Nov)</span><a class="pill p-fu" href="../../2026-W48/2026-11-26/card.html">↩ Update to 26 Nov</a></div>
+  <h3>GeoServer <mark class="h-cve">CVE-2026-120705</mark> / <mark class="h-cve">CVE-2026-129243</mark> added to <mark class="h-kev">CISA KEV</mark> — exploitation seen, chain leads to unauthenticated RCE</h3>
+  <p class="why"><mark class="h-kev">CISA KEV</mark> on 27 Nov (<mark class="h-due">due 30 Nov</mark>); escalation of the GeoServer row in the 26 Nov report.</p>
+  <div class="score"><div class="meter high" title="CVSS 8.6"><span style="width:86%"></span></div><b class="mv high">8.6</b></div>
+  <details class="more"><summary>Full details</summary><dl><dt>1. Vulnerability details</dt><dd><ul class="pts"><li><mark class="h-cve">CVE-2026-120705</mark> (<mark class="h-score">CVSS 8.6</mark>): unauthenticated file read and request forgery via WFS</li><li><mark class="h-cve">CVE-2026-129243</mark> (<mark class="h-score">CVSS 8.8</mark>): incorrect authorization on OWS services</li><li><mark class="h-kev">CISA KEV</mark> 27 Nov, <mark class="h-due">due 30 Nov</mark></li><li>In-the-wild probing seen by watchTowr on 25 Nov</li><li>Advisories 24 Nov</li><li>Patches released Oct–Nov</li></ul></dd><dt>2. Issue</dt><dd><ul class="pts"><li>One flaw lets anyone read files on the server and make it fetch URLs</li><li>The other lets anyone call OGC service operations that security rules should protect</li></ul></dd><dt>3. How it is exploited</dt><dd><ul class="pts"><li>Unauthenticated requests to WFS / OWS endpoints read configuration files, including the remember-me signing key, and reach protected operations</li><li>Combined with the related flaws (<mark class="h-cve">CVE-2026-129245</mark> hard-coded key, <mark class="h-cve">CVE-2026-129242</mark> JDBC deserialization) this can give remote code execution</li></ul></dd><dt>4. Affected configurations</dt><dd><ul class="pts"><li>GeoServer before 2.27.7, 2.28.6 and 3.0.2 (gs-wfs-core, gs-ows, gs-main; gt-metadata before 33.7 / 34.6 / 35.2)</li></ul></dd><dt>5. Impact</dt><dd><ul class="pts"><li>Credential and configuration theft, access to protected map services, possible full server takeover</li></ul></dd></dl></details>
+  <div class="recs"><h4>Recommendations</h4><ul><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Update to GeoServer 2.27.7, 2.28.6 or 3.0.2 now.</span></li><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>If you cannot patch, restrict GeoServer to trusted networks.</span></li><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Audit exposed servers for leaked credentials, new stored queries and code running on the host.</span></li><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Rotate secrets on any server that was exposed — changing the key in <code>security/config.xml</code> alone does not help.</span></li></ul></div>
+  
+  <div class="srcs"><a class="btn" href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener noreferrer"><svg class="ic " width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg><mark class="h-kev">CISA KEV</mark></a><a class="btn" href="https://thehackernews.com/2026/11/hackers-exploit-two-geoserver-flaws-as.html" target="_blank" rel="noopener noreferrer"><svg class="ic " width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>The Hacker News</a></div>
+ </div>
+</article><article class="item crit">
+ <div class="thumb v-cve"><svg class="ic " width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M12 8v5"/><path d="M12 16.5h.01"/></svg></div>
+ <div class="ibody">
+  <div class="badges"><span class="pill p-crit">🔴 Critical</span><span class="pill p-kev">CISA KEV</span><span class="pill p-due">Due 30 Nov</span><span class="pill p-late">Late (27 Nov)</span><a class="pill p-fu" href="../../2026-W48/2026-11-26/card.html">↩ Update to 26 Nov</a></div>
+  <h3>Drupal <mark class="h-cve">CVE-2026-136716</mark> now in <mark class="h-kev">CISA KEV</mark> (<mark class="h-due">due 30 Nov</mark>) and CERT-In <mark class="h-crit">Critical</mark></h3>
+  <p class="why">Escalation of the 26 Nov item: <mark class="h-kev">KEV</mark> on 27 Nov plus CERT-In <mark class="h-crit">Critical</mark> note CIVN-2026-0579.</p>
+  <div class="score"><div class="meter crit" title="CVSS 9.8"><span style="width:98%"></span></div><b class="mv crit">9.8</b><span class="ep" title="EPSS CVE-2026-136716: 1.2% chance of exploitation in 30 days, 68% percentile">EPSS <span class="meter high sm"><span style="width:3%"></span></span><b class="mv high">1.2%</b> <small>· 68% pct</small></span></div>
+  <details class="more"><summary>Full details</summary><dl><dt>1. Vulnerability details</dt><dd><ul class="pts"><li><mark class="h-cve">CVE-2026-136716</mark> (<mark class="h-score">CVSS 9.8</mark>), Drupal SA-CORE-2026-019</li><li>Exploited in the wild</li><li><mark class="h-kev">CISA KEV</mark> 27 Nov, <mark class="h-due">due 30 Nov</mark></li><li>CERT-In <mark class="h-crit">Critical</mark> note CIVN-2026-0579</li></ul></dd><dt>2. Issue</dt><dd><ul class="pts"><li>Sites whose installer was left reachable after the Fail2Install fix can still be taken over without logging in</li></ul></dd><dt>3. How it is exploited</dt><dd><ul class="pts"><li>Attacker reaches a remotely accessible <code>install.php</code> and takes over the site</li></ul></dd><dt>4. Affected configurations</dt><dd><ul class="pts"><li>Drupal core before 10.6.23, 11.0.0 before 11.3.23, 11.4.0 before 11.4.14</li><li>EOL branches get <mark class="h-bad">no fix</mark></li></ul></dd><dt>5. Impact</dt><dd><ul class="pts"><li>Full site takeover</li><li>Sites exposed after SA-CORE-2026-017 may already be compromised</li></ul></dd></dl></details>
+  <div class="recs"><h4>Recommendations</h4><ul><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Update to 11.4.14 / 11.3.23 / 10.6.23 and run <code>update.php</code>.</span></li><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Block or remove <code>install.php</code>.</span></li><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Review logs for changes involving user 1.</span></li></ul></div>
+  
+  <div class="srcs"><a class="btn" href="https://www.cert-in.org.in/s2cMainServlet?pageid=PUBVLNOTES01&amp;VLCODE=CIVN-2026-0579" target="_blank" rel="noopener noreferrer"><svg class="ic " width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>CERT-In</a><a class="btn" href="https://nvd.nist.gov/vuln/detail/CVE-2026-136716" target="_blank" rel="noopener noreferrer"><svg class="ic " width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>NVD</a></div>
+ </div>
+</article><div class="tablewrap"><h4 class="th4">More CVEs</h4><table><thead><tr><th>#</th><th>CVE · Product · Status · Fix</th><th>CVSS</th></tr></thead><tbody><tr><td data-l="#">3</td><td data-l="CVE"><b><mark class="h-cve">CVE-2026-133275 /<wbr> -133303 /<wbr> -133311 /<wbr> -133323 /<wbr> -133324</mark></b> <a class="pill p-fu" href="../../2026-W48/2026-11-26/card.html">↩ 26 Nov</a><div class="sub">Mitel MiCollab AWV 10.3 (10.3.0.18) and earlier</div><div class="rmeta"><div class="rm"><span class="rl">Status</span><div><ul class="pts tight"><li>CERT-In <mark class="h-crit">Critical</mark> CIVN-2026-0580 (27 Nov)</li><li>Exploited</li><li><mark class="h-kev">KEV</mark> <mark class="h-due">due 28 Nov / 9 Dec</mark></li></ul> <span class="pill p-late">Late (27 Nov)</span></div></div><div class="rm"><span class="rl">Fix</span><span class="fix">Latest MiCollab per MISA-2026-0012</span></div><div class="rm"><span class="rl">Source</span><a class="btn sm" href="https://www.cert-in.org.in/s2cMainServlet?pageid=PUBVLNOTES01&amp;VLCODE=CIVN-2026-0580" target="_blank" rel="noopener noreferrer"><svg class="ic " width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>CERT-In</a></div></div></td><td data-l="CVSS"><div class="score"><div class="meter crit" title="CVSS 9.0"><span style="width:90%"></span></div><b class="mv crit">9.0</b></div><span class="ep" title="EPSS CVE-2026-133275: 0.8% chance of exploitation in 30 days, 52% percentile">EPSS <span class="meter high sm"><span style="width:3%"></span></span><b class="mv high">0.8%</b> <small>· 52% pct</small></span></td></tr></tbody></table></div><p class="also"><b>Also seen:</b> none.</p></div>
+</details><details class="sec" open id="dependency">
+ <summary><span class="sicon v-dep"><svg class="ic " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7.5l9-4 9 4-9 4z"/><path d="M3 7.5v9l9 4 9-4v-9"/><path d="M12 11.5v9"/></svg></span><span class="stitle">Vulnerable Dependency</span><span class="scount">0</span></summary>
+ <div class="sbody"><p class="empty">No new items.</p></div>
+</details><details class="sec" open id="ransomware">
+ <summary><span class="sicon v-ran"><svg class="ic " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7.5a4 4 0 0 1 8 0V11"/><path d="M12 15v2"/></svg></span><span class="stitle">Ransomware</span><span class="scount">0</span></summary>
+ <div class="sbody"><p class="empty">No new items.</p></div>
+</details><details class="sec" open id="phishing">
+ <summary><span class="sicon v-phi"><svg class="ic " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><span class="stitle">Phishing / Malware</span><span class="scount">1</span></summary>
+ <div class="sbody"><article class="item high">
+ <div class="thumb v-phi"><svg class="ic " width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
+ <div class="ibody">
+  <div class="badges"><span class="pill p-high">🟠 High</span><span class="pill p-late">Late (27 Nov)</span></div>
+  <h3>Microsoft Store app "Setup Assistant" delivered the PowerShell-based Vinci RAT</h3>
+  <p class="why">Malware shipped through the official Microsoft Store with a Microsoft-signed installer.</p>
+  
+  <details class="more"><summary>Full details</summary><dl><dt>1. Details</dt><dd><ul class="pts"><li>eSentire research</li><li>Electron app "Setup Assistant" by ETPS Ltd, first released 1 Jun 2026</li><li>Reported to Microsoft 10 Nov</li><li>App no longer available</li><li>Not attributed</li></ul></dd><dt>2. Issue</dt><dd><ul class="pts"><li>A fake download site for a screenshot tool sent users to a Store app that downloads and runs a remote access trojan</li></ul></dd><dt>3. How it is exploited</dt><dd><ul class="pts"><li>Search redirect</li><li>Fake sniping-tool site</li><li>Microsoft-signed installer</li><li>Setup Assistant pulls obfuscated JavaScript / PowerShell</li><li>Stager disables AMSI, adds a scheduled task every 10 minutes and installs Vinci RAT (T1059.001, T1053.005)</li><li>Lookalike sites also spoof Teams and Roblox downloads</li></ul></dd><dt>4. Affected</dt><dd><ul class="pts"><li>Windows users who installed "Setup Assistant" from the Microsoft Store or the lookalike sites</li></ul></dd><dt>5. Impact</dt><dd><ul class="pts"><li>Remote shell, file delivery and execution of shellcode / DLL / EXE</li><li>Inventory of security tools</li></ul></dd></dl></details>
+  <div class="recs"><h4>Recommendations</h4><ul><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Search endpoints for "Setup Assistant" by ETPS Ltd and remove it.</span></li><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Hunt for PowerShell scheduled tasks that run every 10 minutes.</span></li><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Block the indicators below.</span></li><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Allow only approved Microsoft Store apps on managed devices.</span></li></ul></div>
+  <div class="iocs"><h4>IOCs <small>defanged — do not open</small></h4><div class="chips"><span class="chip">setup-assistant[.]com</span><span class="chip">monkeysholder[.]info</span><span class="chip">codes-team[.]com</span><span class="chip">snipp.codes-team[.]com</span><span class="chip">teams-bing.codes-team[.]com</span></div></div>
+  <div class="srcs"><a class="btn" href="https://thehackernews.com/2026/11/microsoft-store-app-found-delivering.html" target="_blank" rel="noopener noreferrer"><svg class="ic " width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>The Hacker News</a></div>
+ </div>
+</article></div>
+</details><details class="sec" open id="actors">
+ <summary><span class="sicon v-act"><svg class="ic " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18"/><path d="M6 11l1.5-6h9L18 11"/><circle cx="8" cy="16" r="2.5"/><circle cx="16" cy="16" r="2.5"/><path d="M10.5 16h3"/></svg></span><span class="stitle">Threat Actors</span><span class="scount">1</span></summary>
+ <div class="sbody"><article class="item high">
+ <div class="thumb v-act"><svg class="ic " width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18"/><path d="M6 11l1.5-6h9L18 11"/><circle cx="8" cy="16" r="2.5"/><circle cx="16" cy="16" r="2.5"/><path d="M10.5 16h3"/></svg></div>
+ <div class="ibody">
+  <div class="badges"><span class="pill p-high">🟠 High</span><span class="pill p-late">Late (27 Nov)</span></div>
+  <h3>Suspected Vietnam-linked WeaveLotus spies on Southeast Asian governments and military over the South China Sea</h3>
+  <p class="why">Confirmed intrusions at government, military and legislative bodies using old, public flaws and default passwords.</p>
+  <div class="score"><span class="ep" title="EPSS CVE-2024-36401: 99.8% chance of exploitation in 30 days, 100% percentile">EPSS <span class="meter crit sm"><span style="width:100%"></span></span><b class="mv crit">99.8%</b> <small>· 100% pct</small></span></div>
+  <details class="more"><summary>Full details</summary><dl><dt>1. Details</dt><dd><ul class="pts"><li>SOCRadar research</li><li>WeaveLotus (RedOps)</li><li>5 confirmed intrusions in Thailand and the Philippines plus reconnaissance of Indonesia</li><li>Aug–Sep 2026</li><li>State sponsorship not confirmed</li></ul></dd><dt>2. Issue</dt><dd><ul class="pts"><li>An espionage cluster breaks into exposed public-facing apps to steal government data tied to South China Sea interests</li></ul></dd><dt>3. How it is exploited</dt><dd><ul class="pts"><li>Exploits GeoServer <mark class="h-cve">CVE-2024-36401</mark> and osTicket <mark class="h-cve">CVE-2021-42235</mark>, default JasperReports admin passwords, Laravel debug mode and root SSH on Keycloak 3.4 (T1190, T1078)</li><li>Reverse SSH tunnels and SOCKS proxies, lateral movement, password spraying, offline cracking of Keycloak hashes (T1572, T1110)</li></ul></dd><dt>4. Affected</dt><dd><ul class="pts"><li>Government, military and legislative organisations in Thailand, the Philippines and Indonesia</li></ul></dd><dt>5. Impact</dt><dd><ul class="pts"><li><mark class="h-num">349,782 records</mark> from a Thai government system, 1,502 directory records and 5,000 archives from a Thai legislative body, and military CMS data</li></ul></dd></dl></details>
+  <div class="recs"><h4>Recommendations</h4><ul><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Patch GeoServer <mark class="h-cve">CVE-2024-36401</mark> and osTicket <mark class="h-cve">CVE-2021-42235</mark>.</span></li><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Remove default credentials and turn off Laravel debug mode in production.</span></li><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Upgrade end-of-life Keycloak and block root SSH.</span></li><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Block the indicator below.</span></li></ul></div>
+  <div class="iocs"><h4>IOCs <small>defanged — do not open</small></h4><div class="chips"><span class="chip">172.235.245[.]49</span></div></div>
+  <div class="srcs"><a class="btn" href="https://thehackernews.com/2026/11/suspected-vietnam-linked-hackers-target.html" target="_blank" rel="noopener noreferrer"><svg class="ic " width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>The Hacker News</a></div>
+ </div>
+</article></div>
+</details><details class="sec" open id="breaches">
+ <summary><span class="sicon v-bre"><svg class="ic " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v13c0 1.7 3.6 3 8 3s8-1.3 8-3v-13"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><span class="stitle">Data Breaches</span><span class="scount">2</span></summary>
+ <div class="sbody"><article class="item high">
+ <div class="thumb v-bre"><svg class="ic " width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v13c0 1.7 3.6 3 8 3s8-1.3 8-3v-13"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div>
+ <div class="ibody">
+  <div class="badges"><span class="pill p-high">🟠 High</span></div>
+  <h3>pCloud Pass password manager attacked — user emails exposed and logins attempted despite 2FA</h3>
+  <p class="why">Third password-manager incident this month, after mSecure and 1Password.</p>
+  
+  <details class="more"><summary>Full details</summary><dl><dt>1. Details</dt><dd><ul class="pts"><li>pCloud Pass</li><li>Disclosed 28 Nov</li><li>"a small number" of user email addresses exposed</li><li>Unknown devices connected to accounts</li><li>No actor named</li></ul></dd><dt>2. What was exposed</dt><dd><ul class="pts"><li>Attackers connected unknown devices to pCloud Pass accounts</li><li>Users got new-device alerts even with 2FA on</li></ul></dd><dt>3. How access was gained</dt><dd><ul class="pts"><li>Not disclosed</li></ul></dd><dt>4. Affected</dt><dd><ul class="pts"><li>Some pCloud Pass users</li><li>pCloud says cloud storage is not affected</li></ul></dd><dt>5. Impact</dt><dd><ul class="pts"><li>Email addresses exposed and login attempts made</li><li>pCloud says passwords and notes stay encrypted behind the Master Password</li></ul></dd></dl></details>
+  <div class="recs"><h4>Recommendations</h4><ul><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>pCloud Pass users: check connected devices and remove unknown ones.</span></li><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Expect phishing that asks for the Master Password or recovery words — never enter them from an email link.</span></li></ul></div>
+  
+  <div class="srcs"><a class="btn" href="https://thehackernews.com/2026/11/pcloud-password-manager-hit-by-cyber.html" target="_blank" rel="noopener noreferrer"><svg class="ic " width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>The Hacker News</a></div>
+ </div>
+</article><article class="item high">
+ <div class="thumb v-bre"><svg class="ic " width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v13c0 1.7 3.6 3 8 3s8-1.3 8-3v-13"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div>
+ <div class="ibody">
+  <div class="badges"><span class="pill p-high">🟠 High</span><span class="pill p-late">Late (27 Nov)</span></div>
+  <h3>Japan's education ministry (MEXT) discloses breach of the government procurement system</h3>
+  <p class="why">Government system breach exposing 164,000 business records.</p>
+  
+  <details class="more"><summary>Full details</summary><dl><dt>1. Details</dt><dd><ul class="pts"><li>MEXT</li><li>Intrusion detected 1 Oct, disclosed late Nov</li><li>~1,700 email addresses and <mark class="h-num">164,000 records</mark></li><li>Attacker and access method not disclosed</li></ul></dd><dt>2. What was exposed</dt><dd><ul class="pts"><li>Unauthorized access to the system that publishes government tenders and contracts</li></ul></dd><dt>3. How access was gained</dt><dd><ul class="pts"><li>Not disclosed</li></ul></dd><dt>4. Affected</dt><dd><ul class="pts"><li>Companies and staff registered in the procurement system</li></ul></dd><dt>5. Impact</dt><dd><ul class="pts"><li>Company names, employee names, email addresses and business information exposed</li><li>No sign of leak or misuse yet</li></ul></dd></dl></details>
+  <div class="recs"><h4>Recommendations</h4><ul><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Suppliers to Japanese ministries: expect tender-themed phishing.</span></li><li><svg class="ic ok" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Verify payment or contract changes by phone.</span></li></ul></div>
+  
+  <div class="srcs"><a class="btn" href="https://therecord.media/japan-education-ministry-cyberattack" target="_blank" rel="noopener noreferrer"><svg class="ic " width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>The Record</a></div>
+ </div>
+</article></div>
+</details>
+
+<section class="summary">
+ <h2>Summary to forward <button class="copy" type="button" onclick="copySummary(this)"><svg class="ic " width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a1 1 0 0 1 1-1h9"/></svg>Copy</button></h2>
+ <ul class="pts sum"><li>CISA added three <mark class="h-bad">exploited</mark> flaws late on 27 Nov, all <mark class="h-due">due 30 Nov</mark>: GeoServer <mark class="h-cve">CVE-2026-120705</mark> and <mark class="h-cve">CVE-2026-129243</mark> (update to 2.27.7 / 2.28.6 / 3.0.2) and Drupal <mark class="h-cve">CVE-2026-136716</mark>, which CERT-In also rated <mark class="h-crit">Critical</mark></li><li>The Mitel MiCollab, Juniper Session Smart, Xen Orchestra and Danfoss <mark class="h-kev">KEV</mark> deadlines are today, and CERT-In flagged Mitel MiCollab as <mark class="h-crit">Critical</mark></li><li>A Microsoft Store app delivered the Vinci RAT, suspected Vietnam-linked WeaveLotus stole data from Thai and Philippine government bodies, pCloud Pass users had emails exposed and logins attempted despite 2FA, and Japan's education ministry disclosed a procurement-system breach</li><li>The UK DWP took some services offline after a cyber incident</li></ul>
+</section>
+<p class="foot">IOCs are defanged. Sources: approved feeds only.</p>
+</div>
+<script>
+function copySummary(b){
+ var t=[].map.call(document.querySelectorAll(".summary .sum li"),function(l){return "• "+l.innerText;}).join("\n");
+ try{navigator.clipboard.writeText(t).then(function(){b.lastChild.textContent="Copied";});}catch(e){}
+}
+// "#snapshot": dark theme, banner + overview only, and record the height for the Chat picture
+if(location.hash==="#snapshot"){var r=document.documentElement;r.setAttribute("data-theme","dark");r.classList.add("snap");
+ var g=document.querySelector(".grid");r.setAttribute("data-shot-h",Math.ceil(g.getBoundingClientRect().bottom+window.scrollY+20));}
+</script>
+</body>
+</html>
